@@ -26,11 +26,18 @@
       display: block;
       padding: 4px 0;
     }
-
+/* 
     #toc .is-active-link {
       font-weight: bold;
       border-left: 3px solid #0366d6;
       padding-left: 6px;
+      background-color: #eaf3ff;
+    } */
+
+    #toc > .toc-list .is-active-link {
+      font-weight: bold;
+      border-left: 3px solid #0366d6;
+      padding-left: 6px !important; /* Ensure override */
       background-color: #eaf3ff;
     }
   </style>
@@ -65,16 +72,17 @@
   <!-- TOCBOT Script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
   <script>
-    tocbot.init({
-      tocSelector: '#toc',
-      contentSelector: '#main-content',
-      headingSelector: 'h2, h3',
-      collapseDepth: 6,
-      smoothScroll: true,
-      scrollSmoothDuration: 420,
-      scrollSmoothOffset: -20,
-      activeLinkClass: 'is-active-link',
-      orderedList: false
+    document.addEventListener('DOMContentLoaded', function() {
+      tocbot.init({
+        tocSelector: '#toc',
+        contentSelector: '#main-content',
+        headingSelector: 'h1, h2, h3', // CHANGED: Include h1
+        collapseDepth: 6,
+        headingsOffset: 100,          // ADDED: Match scroll-margin
+        scrollSmoothOffset: -100,     // CHANGED: Negative offset
+        activeLinkClass: 'is-active-link',
+        orderedList: false
+      });
     });
   </script>
 </body>
