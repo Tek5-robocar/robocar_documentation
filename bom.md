@@ -31,6 +31,12 @@ An educational and research-ready platform for autonomous navigation
 
 ## Side Material {#side-material}
 
+You don’t need a battery voltage checker for every car; instead, only one or a few checkers are required for each campus. These devices can be shared among the cars, which helps reduce costs and simplifies management. This approach makes resource use more efficient across the campus.
+
+The car stand is mandatory for flashing the car and performing testing. Without it, these processes cannot be done properly.
+
+The Logitech F710 controller lets you easily switch between different devices, making it flexible for controlling remote cars. It works well indoors and at short range, providing a stable and reliable connection. However, for higher distance use, it’s recommended to switch to a controller designed for longer range to ensure better performance. Its ergonomic design ensures comfortable use during testing and operation, making it a solid choice for short-range remote car control.
+
 | Item                        | Order Link / Notes                          |
 |----------------------------|---------------------------------------------|
 | Battery Voltage Checker    | [Amazon](https://www.amazon.com/Dlyfull-Universal-Battery-Resistance-Batteries/dp/B081JGZ554/ref=sr_1_4_sspa?dib=eyJ2IjoiMSJ9.vnjzlipHLIySOvLrdD4DaiRpN_GFFMFW1hpwaUPFfYrAb1WRABuinlWpbiQaIZITpcmGh7HyHNQubjoU2LoZQ6Ee5QkNNmVTuiogCng7nErDPatXFdQcKo1pUX3iGMQFH2hYay_sYqMyDYkV6UgTUYt15-d1gUiJ3wVyJRuQGUE7e707lLSFP_vcPkz5lbi8BJFowaAsruCuRjraDl16BfmM9hORlwzNcio7caej9bm_JEFTviM29JrWlmEqjFkcS_dzSyfOhX7-K1IeSdcvhFFD6o8acpt7doItiv1i3qg.7Azj6XDaAEf6KNqj1GaMQmKM8J7dfwKModoV7LYnIoM&dib_tag=se&keywords=Battery+voltage+checker&qid=1727957881&sr=8-4-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1) |
