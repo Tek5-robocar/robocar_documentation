@@ -1,3 +1,8 @@
+---
+layout: three-column
+title: Robocar BOM
+---
+
 # Overview
 
 This is an overview of the RacingSimulator project. This last is divided in two parts:
