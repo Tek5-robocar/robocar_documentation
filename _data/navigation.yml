@@ -1,8 +1,6 @@
 - title: Home
   url: /
+  toc_id: introduction
 - title: BOM
   url: /bom/
-# - title: Sensors
-#   url: /sensors/
-# - title: Projects
-#   url: /projects/
+  toc_id: bom-overview
