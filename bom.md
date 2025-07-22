@@ -31,11 +31,17 @@ permalink: /bom/
 
 ## Side Material {#side-material}
 
-You don’t need a battery voltage checker for every car; instead, only one or a few checkers are required for each campus. These devices can be shared among the cars, which helps reduce costs and simplifies management. This approach makes resource use more efficient across the campus.<br>
+You don’t need a battery voltage checker for every car; instead, only one or a few checkers are required for each campus. These devices can be shared among the cars, which helps reduce costs and simplifies management. This approach makes resource use more efficient across the campus.
 
-The car stand is mandatory for flashing the car and performing testing. Without it, these processes cannot be done properly.<br>
+&nbsp;
 
-The Logitech F710 controller lets you easily switch between different devices, making it flexible for controlling remote cars. It works well indoors and at short range, providing a stable and reliable connection. However, for higher distance use, it’s recommended to switch to a controller designed for longer range to ensure better performance. Its ergonomic design ensures comfortable use during testing and operation, making it a solid choice for short-range remote car control.<br>
+The car stand is mandatory for flashing the car and performing testing. Without it, these processes cannot be done properly.
+
+&nbsp;
+
+The Logitech F710 controller lets you easily switch between different devices, making it flexible for controlling remote cars. It works well indoors and at short range, providing a stable and reliable connection. However, for higher distance use, it’s recommended to switch to a controller designed for longer range to ensure better performance. Its ergonomic design ensures comfortable use during testing and operation, making it a solid choice for short-range remote car control.
+
+&nbsp;
 
 | Item                        | Order Link / Notes                          |
 |----------------------------|---------------------------------------------|
