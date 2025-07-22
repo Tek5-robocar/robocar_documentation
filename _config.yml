@@ -1,7 +1,7 @@
 lsi: false
 safe: true
 incremental: false
-theme: minima
+theme: just-the-docs
 highlighter: rouge
 gist:
   noscript: false
