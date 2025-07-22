@@ -10,6 +10,23 @@
 
   <!-- TOCBOT styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+  <style>
+    #toc a {
+      text-decoration: none;
+      color: #0366d6;
+      display: block;
+      padding: 4px 0;
+    }
+
+    #toc .is-active-link {
+      font-weight: bold;
+      border-left: 3px solid #0366d6;
+      padding-left: 6px;
+      background-color: #eaf3ff;
+    }
+  </style>
+
 </head>
 <body>
 
@@ -38,8 +55,8 @@
 
     <!-- Right Sidebar: Table of Contents -->
     <nav style="width: 20%; padding: 1rem; background: #f9f9f9; border-left: 1px solid #ccc; overflow-y: auto;">
-      <h2>On This Page</h2>
-      <div id="toc"></div>
+        <h2>On This Page</h2>
+        <div id="toc"></div>
     </nav>
   </div>
 
@@ -47,11 +64,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
   <script>
     tocbot.init({
-      tocSelector: '#toc',
-      contentSelector: '#main-content',
-      headingSelector: 'h2, h3',
-      collapseDepth: 6,
-      smoothScroll: true
+        tocSelector: '#toc',
+        contentSelector: '#main-content',
+        headingSelector: 'h2, h3',
+        collapseDepth: 6,
+        smoothScroll: true,
+        scrollSmoothDuration: 420,
+        scrollSmoothOffset: -20,
+        activeLinkClass: 'is-active-link', // 👈 this activates bold on scroll
+        orderedList: false
     });
   </script>
 </body>
