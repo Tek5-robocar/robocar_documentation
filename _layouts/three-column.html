@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ page.title }}</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+    aside, nav, main {
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    aside {
+      width: 20%;
+      background: #f4f4f4;
+      border-right: 1px solid #ccc;
+    }
+    main {
+      width: 60%;
+    }
+    nav {
+      width: 20%;
+      background: #f9f9f9;
+      border-left: 1px solid #ccc;
+    }
+    a {
+      text-decoration: none;
+      color: #0366d6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Left Column: Page List -->
+  <aside>
+    <h2>Pages</h2>
+    <ul>
+      {% assign md_pages = site.pages | where_exp:"p","p.ext == '.md'" %}
+      {% for page in md_pages %}
+        {% if page.title %}
+          <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </aside>
+
+  <!-- Center Column: Page Content -->
+  <main>
+    <h1>{{ page.title }}</h1>
+    {{ content }}
+  </main>
+
+  <!-- Right Column: TOC Placeholder -->
+  <nav>
+    <h2>On This Page</h2>
+    <div id="toc">
+      <!-- Optional JS TOC can go here -->
+      <p>(TOC goes here — add manually or use JS/plugin)</p>
+    </div>
+  </nav>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: three-column
 title: Robocar BOM
 permalink: /bom/
 ---
