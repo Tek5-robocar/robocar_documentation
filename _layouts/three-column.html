@@ -249,7 +249,8 @@
         {% for item in site.data.navigation %}
           <li>
             <a href="{{ item.url | relative_url }}" 
-               {% if page.url == item.url %}class="active"{% endif %}>
+               {% if page.url == item.url %}class="active"{% endif %}
+               data-toc-id="{{ item.toc_id }}"> <!-- Added data-toc-id -->
               {{ item.title }}
             </a>
           </li>
@@ -270,10 +271,18 @@
     </nav>
   </div>
 
-  <!-- TOCBOT Script -->
+  <!-- Mobile TOC Toggle Button -->
+  <div class="mobile-toc-toggle" onclick="toggleToc()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 6h18M3 12h18M3 18h18"/>
+    </svg>
+  </div>
+
+  <!-- TOCBOT Script and Custom JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Tocbot
       tocbot.init({
         tocSelector: '#toc',
         contentSelector: '#main-content',
@@ -284,7 +293,57 @@
         activeLinkClass: 'is-active-link',
         orderedList: false
       });
+
+      // Get all sidebar links
+      const sidebarLinks = document.querySelectorAll('.sidebar a');
+
+      // Handle sidebar link clicks
+      sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          // Remove existing active TOC links
+          document.querySelectorAll('#toc .is-active-link').forEach(activeLink => {
+            activeLink.classList.remove('is-active-link');
+          });
+
+          // Find the TOC link that matches the data-toc-id
+          const tocId = this.getAttribute('data-toc-id');
+          if (tocId) {
+            const tocLink = document.querySelector(`#toc .toc-link[href="#${tocId}"]`);
+            if (tocLink) {
+              tocLink.classList.add('is-active-link');
+              // Scroll to the section
+              const targetSection = document.getElementById(tocId);
+              if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          }
+        });
+      });
+
+      // Set initial TOC active link based on active sidebar link
+      const activeSidebarLink = document.querySelector('.sidebar a.active');
+      if (activeSidebarLink) {
+        const tocId = activeSidebarLink.getAttribute('data-toc-id');
+        if (tocId) {
+          const tocLink = document.querySelector(`#toc .toc-link[href="#${tocId}"]`);
+          if (tocLink) {
+            tocLink.classList.add('is-active-link');
+            // Optionally scroll to the section on page load
+            const targetSection = document.getElementById(tocId);
+            if (targetSection) {
+              targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }
+      }
     });
+
+    // Mobile TOC toggle function
+    function toggleToc() {
+      const tocSidebar = document.querySelector('.toc-sidebar');
+      tocSidebar.style.display = tocSidebar.style.display === 'block' ? 'none' : 'block';
+    }
   </script>
 </body>
 </html>
