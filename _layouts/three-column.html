@@ -3,67 +3,268 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ page.title }}</title>
-
-  <!-- Minima styles -->
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
   <!-- TOCBOT styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
-
+  
   <style>
+    :root {
+      --sidebar-bg: #f8f9fa;
+      --toc-active-bg: #eaf3ff;
+      --border-color: #dee2e6;
+      --primary-color: #0366d6;
+      --text-color: #333;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      height: 100vh;
+      overflow: hidden;
+      background: #f5f7fa;
+    }
+    
     html {
       scroll-behavior: smooth;
     }
-
-    h2, h3 {
-      scroll-margin-top: 100px; /* ensures headers don't hide under TOC offset */
+    
+    h1, h2, h3 {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      scroll-margin-top: 100px;
     }
-
-    #toc a {
+    
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    
+    /* Left Sidebar Styles */
+    .sidebar {
+      width: 20%;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border-color);
+      padding: 1.5rem;
+      overflow: hidden; /* Disable scrolling */
+    }
+    
+    .sidebar h2 {
+      font-size: 1.2rem;
+      margin: 1rem 0 0.5rem 0;
+      color: #555;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .sidebar ul {
+      list-style: none;
+    }
+    
+    .sidebar li {
+      margin: 0.5rem 0;
+    }
+    
+    .sidebar a {
       text-decoration: none;
-      color: #0366d6;
+      color: #444;
       display: block;
-      padding: 4px 0;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: all 0.2s;
     }
-/* 
+    
+    .sidebar a:hover {
+      background-color: #e9ecef;
+      color: var(--primary-color);
+    }
+    
+    .sidebar a.active {
+      background-color: var(--toc-active-bg);
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+    
+    /* Main Content Styles */
+    .main-content {
+      width: 60%;
+      padding: 2rem;
+      overflow-y: auto; /* Only this column scrolls */
+      background: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
+    
+    /* Right TOC Styles */
+    .toc-sidebar {
+      width: 20%;
+      background: var(--sidebar-bg);
+      border-left: 1px solid var(--border-color);
+      padding: 1.5rem;
+      overflow: hidden; /* Disable scrolling */
+    }
+    
+    .toc-sidebar h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #555;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    /* TOCBOT Customization */
+    #toc {
+      position: relative;
+    }
+    
+    #toc .toc-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    #toc .toc-list-item {
+      position: relative;
+      margin: 0.25rem 0;
+    }
+    
+    #toc .toc-link {
+      text-decoration: none;
+      color: #555;
+      display: block;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+    
+    #toc .toc-link:hover {
+      background-color: #e9ecef;
+      color: var(--primary-color);
+    }
+    
+    /* Active link styling */
     #toc .is-active-link {
+      font-weight: bold !important;
+      color: var(--primary-color) !important;
+      background-color: var(--toc-active-bg) !important;
+      border-left: 3px solid var(--primary-color) !important;
+      padding-left: 12px !important;
+    }
+    
+    /* Mobile Responsiveness */
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+      }
+      
+      .sidebar, .main-content, .toc-sidebar {
+        width: 100%;
+        height: auto;
+      }
+      
+      .toc-sidebar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 250px;
+        z-index: 100;
+        display: none;
+      }
+      
+      .mobile-toc-toggle {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 101;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+    }
+    
+    /* Logo and branding */
+    .logo {
+      font-size: 1.5rem;
       font-weight: bold;
-      border-left: 3px solid #0366d6;
-      padding-left: 6px;
-      background-color: #eaf3ff;
-    } */
-
-    #toc > .toc-list .is-active-link {
-      font-weight: bold;
-      border-left: 3px solid #0366d6;
-      padding-left: 6px !important; /* Ensure override */
-      background-color: #eaf3ff;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .logo svg {
+      width: 30px;
+      height: 30px;
+    }
+    
+    /* Scrollbar styling */
+    .main-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    .main-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    .main-content::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+    }
+    
+    .main-content::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
     }
   </style>
 </head>
 <body>
-
-  <div style="display: flex; height: 100vh;">
-
-    <!-- Left Sidebar: Navigation from _data/navigation.yml -->
-    <aside style="width: 20%; padding: 1rem; background: #f4f4f4; border-right: 1px solid #ccc; overflow-y: auto;">
-      <h2>Pages</h2>
+  <div class="container">
+    <!-- Left Sidebar: Navigation -->
+    <aside class="sidebar">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 2v14h14V5H5zm4 2h2v6H9V7zm6 0h-2v6h2V7z"/>
+        </svg>
+        <span>{{ site.title }}</span>
+      </div>
+      
+      <h2>Navigation</h2>
       <ul>
         {% for item in site.data.navigation %}
-          <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+          <li>
+            <a href="{{ item.url | relative_url }}" 
+               {% if page.url == item.url %}class="active"{% endif %}>
+              {{ item.title }}
+            </a>
+          </li>
         {% endfor %}
       </ul>
     </aside>
 
-    <!-- Center: Main Content -->
-    <main id="main-content" style="width: 60%; padding: 2rem; overflow-y: auto;">
+    <!-- Center: Main Content - Scrollable -->
+    <main id="main-content" class="main-content">
       <h1 class="page-title">{{ page.title }}</h1>
       {{ content }}
     </main>
 
-    <!-- Right Sidebar: Table of Contents -->
-    <nav style="width: 20%; padding: 1rem; background: #f9f9f9; border-left: 1px solid #ccc; overflow-y: auto;">
+    <!-- Right Sidebar: Table of Contents - Fixed -->
+    <nav class="toc-sidebar">
       <h2>On This Page</h2>
       <div id="toc"></div>
     </nav>
@@ -76,10 +277,10 @@
       tocbot.init({
         tocSelector: '#toc',
         contentSelector: '#main-content',
-        headingSelector: 'h1, h2, h3', // CHANGED: Include h1
+        headingSelector: 'h1, h2, h3',
         collapseDepth: 6,
-        headingsOffset: 100,          // ADDED: Match scroll-margin
-        scrollSmoothOffset: -100,     // CHANGED: Negative offset
+        headingsOffset: 100,
+        scrollSmoothOffset: -100,
         activeLinkClass: 'is-active-link',
         orderedList: false
       });
