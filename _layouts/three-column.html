@@ -1,10 +1,14 @@
+---
+layout: default
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>{{ page.title }}</title>
 
-  <!-- Minima styles (optional) -->
+  <!-- Minima styles -->
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,20 +19,17 @@
 
   <div style="display: flex; height: 100vh;">
 
-    <!-- Left: List of pages -->
+    <!-- Left Sidebar: Navigation from _data/navigation.yml -->
     <aside style="width: 20%; padding: 1rem; background: #f4f4f4; border-right: 1px solid #ccc; overflow-y: auto;">
       <h2>Pages</h2>
       <ul>
-        {% assign md_pages = site.pages | where_exp:"p", "p.ext == '.md'" %}
-        {% for page in md_pages %}
-          {% if page.title %}
-            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-          {% endif %}
+        {% for item in site.data.navigation %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
         {% endfor %}
       </ul>
     </aside>
 
-    <!-- Center: Render with Minima layout styles -->
+    <!-- Center: Main Content -->
     <main id="main-content" style="width: 60%; padding: 2rem; overflow-y: auto;">
       <header class="page-header">
         <h1 class="page-title">{{ page.title }}</h1>
@@ -39,7 +40,7 @@
       </div>
     </main>
 
-    <!-- Right: TOC -->
+    <!-- Right Sidebar: Table of Contents -->
     <nav style="width: 20%; padding: 1rem; background: #f9f9f9; border-left: 1px solid #ccc; overflow-y: auto;">
       <h2>On This Page</h2>
       <div id="toc"></div>
