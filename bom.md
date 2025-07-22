@@ -24,7 +24,7 @@ An educational and research-ready platform for autonomous navigation
 | USB A – USB C Cable         | Order Cable (Amazon)                       |
 | WiFi Adapter                | Order WiFi Adapter (Amazon)                |
 | Battery 4s Lipo             | Order Battery (Studio Sport / Amazon)      |
-| Chassis (Traxxas Ford Fiesta) | Order Chassis (PCM Shop / Amazon)       |
+| Chassis (Traxxas Ford Fiesta) | Order Chassis ([PCM Shop](https://www.pcmshop.com/fr/content/4-coordonnees) / [Amazon](https://www.amazon.fr/Traxxas-Fiesta-Rally-brushless-74154-4/dp/B0CRHZXTPJ))       |
 | LiDAR LD19                  | Order LD19 (Amazon / GoTronic)             |
 | DC Converter                | Order DC Converter (Hobbyking / Amazon)    |
 | XT60 Connector              | Order XT60 Connector (Amazon)              |
