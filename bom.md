@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Robocar BOM
-permalink: /robocar-bom/
+permalink: /bom/
 ---
 
 # Robocar: Bills of Material
@@ -14,7 +14,7 @@ An educational and research-ready platform for autonomous navigation
 
 | Item                         | Order Link / Notes                         |
 |-----------------------------|--------------------------------------------|
-| Anti-Spark                  | Order Anti Spark (Amazon)                  |
+| Anti-Spark                  | [Order Anti Spark](https://www.amazon.com/dp/B086Y8KSB6?ref=ppx_yo2ov_dt_b_fed_asin_title) (Amazon)                  |
 | VESC Controller             | Order VESC (Amazon)                        |
 | Oak-D Depth Camera          | Order Camera (Amazon)                      |
 | Point One Navigation System | Order INS (PointOne Store)                |
