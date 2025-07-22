@@ -5,9 +5,6 @@
   <title>{{ page.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <!-- TOCBOT styles -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
-  
   <style>
     :root {
       --sidebar-bg: #f8f9fa;
@@ -118,7 +115,7 @@
       border-bottom: 1px solid #ddd;
     }
     
-    /* TOCBOT Customization */
+    /* Custom TOC Styles */
     #toc {
       position: relative;
     }
@@ -148,7 +145,7 @@
       color: var(--primary-color);
     }
     
-    /* Active link styling */
+    /* Active TOC link styling */
     #toc .is-active-link {
       font-weight: bold !important;
       color: var(--primary-color) !important;
@@ -250,7 +247,7 @@
           <li>
             <a href="{{ item.url | relative_url }}" 
                {% if page.url == item.url %}class="active"{% endif %}
-               data-toc-id="{{ item.toc_id }}"> <!-- Added data-toc-id -->
+               data-toc-id="{{ item.toc_id }}">
               {{ item.title }}
             </a>
           </li>
@@ -267,9 +264,11 @@
     <!-- Right Sidebar: Table of Contents - Fixed -->
     <nav class="toc-sidebar">
       <h2>On This Page</h2>
-      <div id="toc"></div>
+      <div id="toc">
+        <ul class="toc-list"></ul>
+      </div>
     </nav>
-  </div>
+  </div> 
 
   <!-- Mobile TOC Toggle Button -->
   <div class="mobile-toc-toggle" onclick="toggleToc()">
@@ -278,26 +277,45 @@
     </svg>
   </div>
 
-  <!-- TOCBOT Script and Custom JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+  <!-- Custom JavaScript for TOC and Synchronization -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize Tocbot
-      tocbot.init({
-        tocSelector: '#toc',
-        contentSelector: '#main-content',
-        headingSelector: 'h1, h2, h3',
-        collapseDepth: 6,
-        headingsOffset: 100,
-        scrollSmoothOffset: -100,
-        activeLinkClass: 'is-active-link',
-        orderedList: false
+      // Generate TOC
+      const tocList = document.querySelector('#toc .toc-list');
+      const mainContent = document.querySelector('#main-content');
+      const headings = mainContent.querySelectorAll('h1, h2, h3');
+
+      headings.forEach(heading => {
+        // Skip the page title (h1.page-title)
+        if (heading.classList.contains('page-title')) return;
+
+        // Ensure heading has an ID
+        if (!heading.id) {
+          heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+        }
+
+        // Create TOC list item
+        const listItem = document.createElement('li');
+        listItem.classList.add('toc-list-item');
+
+        const link = document.createElement('a');
+        link.classList.add('toc-link');
+        link.href = `#${heading.id}`;
+        link.textContent = heading.textContent;
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.getElementById(heading.id).scrollIntoView({ behavior: 'smooth' });
+          // Update active TOC link
+          document.querySelectorAll('#toc .is-active-link').forEach(l => l.classList.remove('is-active-link'));
+          link.classList.add('is-active-link');
+        });
+
+        listItem.appendChild(link);
+        tocList.appendChild(listItem);
       });
 
-      // Get all sidebar links
-      const sidebarLinks = document.querySelectorAll('.sidebar a');
-
       // Handle sidebar link clicks
+      const sidebarLinks = document.querySelectorAll('.sidebar a');
       sidebarLinks.forEach(link => {
         link.addEventListener('click', function(event) {
           // Remove existing active TOC links
@@ -329,7 +347,7 @@
           const tocLink = document.querySelector(`#toc .toc-link[href="#${tocId}"]`);
           if (tocLink) {
             tocLink.classList.add('is-active-link');
-            // Optionally scroll to the section on page load
+            // Scroll to the section on page load
             const targetSection = document.getElementById(tocId);
             if (targetSection) {
               targetSection.scrollIntoView({ behavior: 'smooth' });
@@ -337,6 +355,24 @@
           }
         }
       }
+
+      // Optional: Update TOC active link on scroll
+      window.addEventListener('scroll', () => {
+        let currentHeading = null;
+        headings.forEach(heading => {
+          if (heading.getBoundingClientRect().top <= 150 && heading.getBoundingClientRect().top >= -heading.offsetHeight) {
+            currentHeading = heading;
+          }
+        });
+
+        if (currentHeading) {
+          document.querySelectorAll('#toc .is-active-link').forEach(l => l.classList.remove('is-active-link'));
+          const tocLink = document.querySelector(`#toc .toc-link[href="#${currentHeading.id}"]`);
+          if (tocLink) {
+            tocLink.classList.add('is-active-link');
+          }
+        }
+      });
     });
 
     // Mobile TOC toggle function
