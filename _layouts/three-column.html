@@ -386,12 +386,30 @@
         }
       }
 
-      // Optional: Update TOC active link on scroll (remove if not needed)
-      window.addEventListener('scroll', () => {
+      // Throttle function to limit scroll event frequency
+      function throttle(fn, wait) {
+        let time = Date.now();
+        return function() {
+          if ((time + wait - Date.now()) < 0) {
+            fn();
+            time = Date.now();
+          }
+        };
+      }
+
+      // Update TOC active link on scroll
+      mainContent.addEventListener('scroll', throttle(() => {
         let currentHeading = null;
+        let closestDistance = Infinity;
+
         headings.forEach(heading => {
-          if (heading.getBoundingClientRect().top <= 150 && heading.getBoundingClientRect().top >= -heading.offsetHeight) {
+          if (heading.classList.contains('page-title')) return;
+          const rect = heading.getBoundingClientRect();
+          const distance = Math.abs(rect.top);
+          // Consider headings within the viewport or near the top
+          if (rect.top >= -heading.offsetHeight && rect.top <= window.innerHeight / 2 && distance < closestDistance) {
             currentHeading = heading;
+            closestDistance = distance;
           }
         });
 
@@ -400,9 +418,11 @@
           const tocLink = document.querySelector(`#toc .toc-link[href="#${currentHeading.id}"]`);
           if (tocLink) {
             tocLink.classList.add('is-active-link');
+          } else {
+            console.warn(`No TOC link found for heading ID: ${currentHeading.id}`);
           }
         }
-      });
+      }, 100));
     });
 
     // Mobile TOC toggle function
