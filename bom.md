@@ -10,7 +10,7 @@ An educational and research-ready platform for autonomous navigation
 
 ---
 
-## 1. Car Material
+## Car Material
 
 | Item                         | Order Link / Notes                         |
 |-----------------------------|--------------------------------------------|
@@ -33,7 +33,7 @@ An educational and research-ready platform for autonomous navigation
 
 ---
 
-## 2. Side Material
+## Side Material
 
 | Item                        | Order Link / Notes                          |
 |----------------------------|---------------------------------------------|
