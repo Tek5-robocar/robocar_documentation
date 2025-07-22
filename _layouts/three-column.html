@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>{{ page.title }}</title>
+
+  <!-- TOC styles (Tocbot) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
   <style>
     * {
       box-sizing: border-box;
@@ -34,6 +38,22 @@
       text-decoration: none;
       color: #0366d6;
     }
+
+    #toc ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    #toc a {
+      display: block;
+      padding: 2px 0;
+      color: #0366d6;
+    }
+
+    #toc .is-active-link {
+      font-weight: bold;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -52,19 +72,27 @@
   </aside>
 
   <!-- Center Column: Page Content -->
-  <main>
+  <main id="main-content">
     <h1>{{ page.title }}</h1>
     {{ content }}
   </main>
 
-  <!-- Right Column: TOC Placeholder -->
+  <!-- Right Column: Table of Contents -->
   <nav>
     <h2>On This Page</h2>
-    <div id="toc">
-      <!-- Optional JS TOC can go here -->
-      <p>(TOC goes here — add manually or use JS/plugin)</p>
-    </div>
+    <div id="toc"></div>
   </nav>
 
+  <!-- Tocbot JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+  <script>
+    tocbot.init({
+      tocSelector: '#toc',
+      contentSelector: '#main-content',
+      headingSelector: 'h2, h3',
+      collapseDepth: 6,
+      smoothScroll: true
+    });
+  </script>
 </body>
 </html>
