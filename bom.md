@@ -46,14 +46,4 @@ The Logitech F710 controller lets you easily switch between different devices, m
 
 ## Notes {#notes}
 
-Most of the components can be sourced from:
-- Amazon
-- GoTronic
-- Hobbyking
-- PCM Shop
-- Studio Sport
-- PointOne Navigation
-- Mini Planes
-- Leclerc
-
-Be sure to verify compatibility with your Jetson Nano and chosen chassis.
+Most of the components listed can be sourced from well-known suppliers such as Amazon, GoTronic, Hobbyking, PCM Shop, Studio Sport, PointOne Navigation, Mini Planes, and Leclerc. It’s important to note that these components represent what we have used and assembled at Epitech, but they are by no means the only options available. Depending on the specific use case, requirements, and desired performance, the components can be upgraded or modified to better suit different needs. For example, higher precision parts, more durable materials, or specialized sensors might be chosen for advanced applications or harsher environments. This flexibility allows users to customize and improve their setups beyond the baseline configuration we have developed, ensuring optimal performance tailored to their unique projects.
