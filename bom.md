@@ -1,6 +1,6 @@
 ---
 layout: three-column
-title: Robocar BOM
+title: BOM
 permalink: /bom/
 ---
 
