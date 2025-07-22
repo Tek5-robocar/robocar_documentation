@@ -6,7 +6,7 @@ permalink: /bom/
 
 # Robocar: Bills of Material
 
-An educational and research-ready platform for autonomous navigation
+**An educational and research-ready platform for autonomous navigation**
 
 ## Car Material {#car-material}
 
