@@ -4,3 +4,6 @@
 - title: BOM
   url: /bom/
   toc_id: car-material
+- title: VESC
+  url: /vesc-calibration/
+  toc_id: introduction
