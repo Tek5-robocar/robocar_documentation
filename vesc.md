@@ -27,7 +27,7 @@ The VESC (Vedder Electronic Speed Controller) is an open-source motor controller
 
 ## 3. Configuration {#configuration}
 
-### A. Hardware Setup {#hardware}
+#### A. Hardware Setup {#hardware}
 
 1. **Power Connection**  
    Connect the VESC to the 4S LiPo battery provided in the kit using the XT60 (or compatible) connector. Double-check polarity before connecting to avoid damage.
@@ -46,7 +46,7 @@ The VESC (Vedder Electronic Speed Controller) is an open-source motor controller
 
 ---
 
-### B. VESC Tool Setup {#vesc-tool}
+#### B. VESC Tool Setup {#vesc-tool}
 
 1. **Open the VESC Tool**  
    Locate and open the VESC Tool software you installed earlier on your computer with hardware setup connected to your laptop.  
@@ -174,7 +174,7 @@ Once you are on this page, you can test by moving the cursor.
 
 ---
 
-## ✅ Notes
+## Notes
 
 - Always elevate the car on the provided stand before any motor testing.
 - Double-check polarity and wire order before powering the system.
