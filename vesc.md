@@ -177,13 +177,91 @@ To setup the servo motor:
 After that, you can test in the following tab.
 
 ![Image](./images/vesc/test_servo.png)
-![Image](./images/vesc/move_servo.png)
 
 Once you are on this page, you can test by moving the cursor.
 
+![Image](./images/vesc/move_servo.png)
+
 &nbsp;
 
-## 4. Notes {#notes}
+## 4. Python Development with `pyvesc` {#python-pyvesc}
+
+`pyvesc` is a Python library that allows direct communication with the VESC over USB or UART using the official VESC protocol. This enables scripting motor and servo control using Python — ideal for robotics and automation.
+
+&nbsp;
+
+### 4.1 Installation {#pyvesc-installation}
+
+To use `pyvesc`, install the required packages:
+
+- `pyvesc` (VESC protocol encoder/decoder)
+- `pyserial` (USB serial communication)
+
+Install them using pip:
+
+```bash
+pip install git+https://github.com/LiamBindle/PyVESC.git
+pip install pyserial
+```
+
+&nbsp;
+
+### 4.2 Serial Connection {#pyvesc-connection}
+
+To communicate with the VESC, create a serial connection using the `serial.Serial` function.
+
+- On Linux, the port is usually `/dev/ttyACM0`
+- On Windows, it may be something like `COM3`
+
+&nbsp;
+Example:
+
+```python
+import serial
+from pyvesc import VESC
+
+ser = serial.Serial('/dev/ttyACM0', baudrate=115200, timeout=0.1)
+vesc = VESC(serial_port=ser)
+```
+
+&nbsp;
+
+### 4.3 Set Motor Duty Cycle {#pyvesc-duty-cycle}
+
+You can control motor speed using duty cycle commands.
+
+- Import the message: `from pyvesc.VESC.messages import SetDutyCycle`
+- Send a value between `-1.0` and `1.0`
+- Example to run the motor at 20% power: `ser.write(SetDutyCycle(0.2).serialize())`
+- To stop the motor: `ser.write(SetDutyCycle(0.0).serialize())`
+
+&nbsp;
+
+### 4.4 Set Servo Position {#pyvesc-servo}
+
+To control a servo using the VESC’s PWM output:
+
+- Import the message: `from pyvesc.VESC.messages import SetServoPosition`
+- Use values between `0.0` and `1.0`
+- Center position: `ser.write(SetServoPosition(0.5).serialize())`
+- Minimum: `0.0`, maximum: `1.0`
+
+> ⚠️ Ensure "Enable Servo Output" is set to `true` in VESC Tool as shown in section 3.2.5.
+
+&nbsp;
+
+### 4.5 Recommendations and Tips {#pyvesc-notes}
+
+- Always elevate the vehicle before sending commands
+- Make sure the USB port is accessible and not blocked by OS permissions
+- On Linux, add your user to the `dialout` group if needed
+- Always call `ser.close()` when your script ends
+
+For advanced use, such as reading telemetry (voltage, RPM, current), refer to the official `pyvesc` documentation: [https://github.com/LiamBindle/PyVESC](https://github.com/LiamBindle/PyVESC)
+
+&nbsp;
+
+## 5. Notes {#notes}
 
 - Always elevate the car on the provided stand before any motor testing.
 - Double-check polarity and wire order before powering the system.
