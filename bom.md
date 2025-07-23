@@ -8,7 +8,7 @@ permalink: /bom/
 
 **An educational and research-ready platform for autonomous navigation**
 
-## Car Material {#car-material}
+## 1. Car Material {#car-material}
 
 | Item                         | Order Link / Notes                         |
 |-----------------------------|--------------------------------------------|
@@ -29,7 +29,7 @@ permalink: /bom/
 | 12 AWG Cable                | [Amazon](https://www.amazon.fr/Makerfire-silicone-%C3%A9lectrique-flexible-temp%C3%A9rature/dp/B09MVJV7RG/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1ZJDHUAUXT9EQ&dib=eyJ2IjoiMSJ9.T-krqB1VbB6418Ew8j3RWXRgTtEs0-t8DME559jZvXcR5Ab__7Q1te-dCkGgqQ328lsse6N4lqIl4Wv8cOCGnPY4EJ44CQAvV_ap_CRICuVGLr8PNofx6yOOdkTr8-49faFR7yG-PQdsFJT6KQwcNHJ6I6S7P_HDkM6rVCqKDbVKZ9LMFOVnWTZOwv-S1ZMa1MSN228UkCJyJrHMJulXqylNwAbIbaaWOOBlJ_57dwmGN6sw30nRaUdrdGgFDPWnlyulAJTd3Tt_l-X98OW5i60_A_5SxiYJAan5bcP1zSs.RzkhQQSMJUXrdzey68_UpOaPADM8njwBIQuO4xmfIXA&dib_tag=se&keywords=cable%2B12%2BAWG&qid=1730383413&sprefix=cable%2B12%2Bawg%2B%2Caps%2C181&sr=8-5&th=1) |
 | Barrel Jack Cable           | [Amazon](https://www.amazon.fr/Femelle-Connecteur-Connector-Adaptateur-Bricolage/dp/B07VVCT25F/ref=sr_1_3?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=22RSXRG30PWAP&dib=eyJ2IjoiMSJ9.zbcBKJbyaaFOw8zqo8pUdisAtmKLFn1OMtkgfOYF8H2xlEWkqp-nrnFaGjcOmsiZVt6Y0KikzNwtpSyBRcP2wFF-WjK47f_YXA1bAvsD9uJuFrMeQdxYApP20F9RAtIatvAkAYzdyLkdrrUtAxyf20CwSoluItU4Lqs0XmSSBmHem1U79gYJybYO5EM3EOTDxUF304da4ISYc41_tBe9XYv-DAXYdvW6N9XLXTBZJQomZH6hBcDCDzPgT82HPhBr1MzY6AkenCFMcAlGa5gfBjuZ5ImM4nA_7vjMf00ng0Y.DjVrRDtPubtp6h261aISfY3yeqAepay6eVLvim--6Ns&dib_tag=se&keywords=barrel+jack+male+5v&qid=1749309106&sprefix=barrel+jack+male+5v%2Caps%2C114&sr=8-3) |
 
-## Side Material {#side-material}
+## 2. Side Material {#side-material}
 
 You don’t need a battery voltage checker for every car; instead, only one or a few checkers are required for each campus. These devices can be shared among the cars, which helps reduce costs and simplifies management. This approach makes resource use more efficient across the campus.
 
@@ -50,7 +50,7 @@ The Logitech F710 controller lets you easily switch between different devices, m
 | Controller Logitech F710   | [Amazon](https://www.amazon.fr/Logitech-Nano-R%C3%A9cepteur-Configuration-Vibration-Directionnelle/dp/B00CJAEX5M/ref=sr_1_1?adgrpid=61733606808&dib=eyJ2IjoiMSJ9.cDiVttH4fHMw8NczvKf2MKn-Ko87fBFPPOqfHLTVJF-Qc3kDOt3bPnpy0OKhVPrf9iiT96XMKHNPMVjS-JjAG5rpqFi20e0uqpOl9lXIi1rwjS4Zh3oyjrMO56RU2i8vusVEnL2breMBCFYYQOsCRo0jMY_VrqZJri1JgfnRe8BV36vBoPDlnZKrmNjYDFGlqyBO0Z8KYkdUA8c8NQseKobxawn9Jj3pu74yW6Xei1cNMnA-yI9YNgPngSUa5oS-pRA7kLpeUgndfy0mdYJbPG5fCtjMRUajkNXHMZgTg_Y.dIoBzDunwF7rr_M1uvFel4zd931dJWCjfOZppmM4Fww&dib_tag=se&hvadid=275579505812&hvdev=c&hvexpln=0&hvlocphy=1006094&hvnetw=g&hvocijid=5916525581568580616--&hvqmt=e&hvrand=5916525581568580616&hvtargid=kwd-350505950127&hydadcr=27708_1756269&keywords=logitech%2Bf710&mcid=35456d5fa7243057827c767a1df7ee5c&qid=1752158053&sr=8-1&th=1) / [Leclerc](https://www.e.leclerc/fp/logitech-g-f710-manette-de-jeu-sans-fil-5099206041899?et_keyword=&et_campaign=21131075510&et_device=c&et_matchtype=&utm_source=google&utm_medium=cpc&utm_campaign=FR%2FPMAX%2FSUE%2FHigh-Tech%2FInformatique&gad_source=1&gclid=CjwKCAjwgfm3BhBeEiwAFfxrG8tLrFW79ob8EDwCYLX70unLIYQgT66Q0a-dvBvmjL7mYdGFe-DeBhoCCNkQAvD_BwE) |
 | USB SD Reader              | [Amazon](https://www.amazon.fr/Vanja-Adaptateur-Connecteur-Notebooks-Smartphones/dp/B00W02VHM6?th=1) |
 
-## Notes {#notes}
+## 3. Notes {#notes}
 
 Most of the components listed can be sourced from well-known suppliers such as Amazon, GoTronic, Hobbyking, PCM Shop, Studio Sport, PointOne Navigation, Mini Planes, and Leclerc. It’s important to note that these components represent what we have used and assembled at Epitech, but they are by no means the only options available. Depending on the specific use case, requirements, and desired performance, the components can be upgraded or modified to better suit different needs. For example, higher precision parts, more durable materials, or specialized sensors might be chosen for advanced applications or harsher environments. This flexibility allows users to customize and improve their setups beyond the baseline configuration we have developed, ensuring optimal performance tailored to their unique projects.
 

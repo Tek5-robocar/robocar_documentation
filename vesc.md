@@ -8,57 +8,57 @@ permalink: /vesc-calibration/
 
 **An educational and research-ready platform for autonomous navigation**
 
----
+&nbsp;
 
 ## 1. Introduction {#introduction}
 
 The VESC (Vedder Electronic Speed Controller) is an open-source motor controller for electric vehicles and robotics. Calibration ensures precise sensor readings, smooth motor performance, and system optimization.
 
----
+&nbsp;
 
 ## 2. Required Tools and Software {#tools}
 
-- The VESC included in your educational kit  
-- A micro-USB cable  
-- A computer (Windows, macOS, or Linux)  
+- The VESC included in your educational kit
+- A micro-USB cable
+- A computer (Windows, macOS, or Linux)
 - The VESC Tool (free version available at [https://vesc-project.com/](https://vesc-project.com/))
 
----
+&nbsp;
 
 ## 3. Configuration {#configuration}
 
 ### 3.1 Hardware Setup {#hardware}
 
-1. **Power Connection**  
+1. **Power Connection**
    Connect the VESC to the 4S LiPo battery provided in the kit using the XT60 (or compatible) connector. Double-check polarity before connecting to avoid damage.
 
-2. **Motor Connection**  
+2. **Motor Connection**
    Connect the BLDC motor (already mounted on the Traxxas chassis) to the three-phase output wires of the VESC. The order of these wires doesn’t matter initially; it can be corrected later via motor detection.
 
-3. **Servo Motor Connection**  
+3. **Servo Motor Connection**
    Plug the servo motor into the PWM output of the VESC.
 
-4. **USB Connection**  
+4. **USB Connection**
    Use the provided USB cable to connect the VESC to your laptop. This connection allows you to configure and flash the VESC using the VESC Tool.
 
 **Diagram:**
 ![Image](./images/vesc_calibration_electric_diagram.png)
 
----
+&nbsp;
 
 ### 3.2 VESC Tool Setup {#vesc-tool}
 
 #### 3.2.1 VESC Serial Connection {#vesc-serial-connection}
 
 1. **Open the VESC Tool**  
-   Locate and open the VESC Tool software you installed earlier on your computer with hardware setup connected to your laptop.  
+   Locate and open the VESC Tool software you installed earlier on your computer with hardware setup connected to your laptop.
    When you first open the VESC Tool, you will be prompted to accept the Terms and Conditions (CGU). Make sure to read and accept them to proceed to the main interface.
 
 **Screenshot:**
 ![Image](./images/vesc_tool_main_page.png)
 
-2. **Connect to the Listed VESC Device**  
-   Once the VESC Tool is open, select your VESC device from the list to establish a connection. This allows the software to communicate directly with your hardware for flashing and configuration.  
+2. **Connect to the Listed VESC Device**
+   Once the VESC Tool is open, select your VESC device from the list to establish a connection. This allows the software to communicate directly with your hardware for flashing and configuration.
 
    > **Note for Linux users:** You may need to add your user to the `dialout` group to enable USB access. The VESC Tool may prompt you to enter your password, and a system restart is required for the changes to take effect.
 
@@ -70,7 +70,7 @@ If a firmware update is available, a pop-up like the one below will appear.
 **Screenshot:**
 ![Image](./images/vesc_tool_firmware_update_message.png)
 
----
+&nbsp;
 
 #### 3.2.2 Firmware Update {#firmware}
 
@@ -90,7 +90,7 @@ To update the firmware, you have to press the following button,
 
 ![Image](./images/vesc_tool_firmware_update_all.png)
 
-Then press Yes.  
+Then press Yes.
 
 ![Image](./images/vesc_tool_firmware_accept_update.png)
 
@@ -99,7 +99,7 @@ After waiting a few minutes, this message will appear, and your new firmware wil
 **Screenshot:**
 ![Image](./images/vesc_tool_firmware_update_done.png)
 
----
+&nbsp;
 
 #### 3.2.3 Motor Setup {#motor-setup}
 
@@ -145,7 +145,7 @@ To finish, you can press the following button to write all your previous configu
 **Screenshot:**
 ![Image](path/to/image_write_config.png)
 
----
+&nbsp;
 
 #### 3.2.4 Motor Test {#motor-test}
 
@@ -154,7 +154,7 @@ To test if the motor is usable with the VESC, press the following button and the
 **Screenshot:**
 ![Image](path/to/image_motor_test.png)
 
----
+&nbsp;
 
 #### 3.2.5 Servo Setup {#servo-setup}
 
@@ -174,7 +174,7 @@ After that, you can test in the following tab.
 
 Once you are on this page, you can test by moving the cursor.
 
----
+&nbsp;
 
 ## 4. Notes {#notes}
 
@@ -182,6 +182,6 @@ Once you are on this page, you can test by moving the cursor.
 - Double-check polarity and wire order before powering the system.
 - For Linux users, be sure to configure USB permissions properly (`dialout` group).
 
----
+&nbsp;
 
 To contribute improvements or report issues with this calibration guide, please use the GitHub repository’s issues tab or submit a pull request.
