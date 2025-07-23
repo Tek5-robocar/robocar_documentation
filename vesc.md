@@ -27,7 +27,7 @@ The VESC (Vedder Electronic Speed Controller) is an open-source motor controller
 
 ## 3. Configuration {#configuration}
 
-#### A. Hardware Setup {#hardware}
+### 3.1 Hardware Setup {#hardware}
 
 1. **Power Connection**  
    Connect the VESC to the 4S LiPo battery provided in the kit using the XT60 (or compatible) connector. Double-check polarity before connecting to avoid damage.
@@ -46,7 +46,9 @@ The VESC (Vedder Electronic Speed Controller) is an open-source motor controller
 
 ---
 
-#### B. VESC Tool Setup {#vesc-tool}
+### 3.2 VESC Tool Setup {#vesc-tool}
+
+#### 3.2.1 VESC Serial Connection {#vesc-serial-connection}
 
 1. **Open the VESC Tool**  
    Locate and open the VESC Tool software you installed earlier on your computer with hardware setup connected to your laptop.  
@@ -70,7 +72,7 @@ If a firmware update is available, a pop-up like the one below will appear.
 
 ---
 
-### 3. Firmware Update {#firmware}
+#### 3.2.2 Firmware Update {#firmware}
 
 This step is optional and only needed if the firmware update message appears during connection.
 
@@ -99,7 +101,7 @@ After waiting a few minutes, this message will appear, and your new firmware wil
 
 ---
 
-### 4. Motor Setup {#motor-setup}
+#### 3.2.3 Motor Setup {#motor-setup}
 
 The next step is to setup the motor. You have to go back to the main page and connect to the VESC again, because the firmware update restarts the VESC.
 
@@ -145,7 +147,7 @@ To finish, you can press the following button to write all your previous configu
 
 ---
 
-### 5. Motor Test {#motor-test}
+#### 3.2.4 Motor Test {#motor-test}
 
 To test if the motor is usable with the VESC, press the following button and then use your keyboard arrow keys.
 
@@ -154,7 +156,7 @@ To test if the motor is usable with the VESC, press the following button and the
 
 ---
 
-### 6. Servo Setup {#servo-setup}
+#### 3.2.5 Servo Setup {#servo-setup}
 
 To setup the servo motor:
 
@@ -174,7 +176,7 @@ Once you are on this page, you can test by moving the cursor.
 
 ---
 
-## Notes
+## 4. Notes {#notes}
 
 - Always elevate the car on the provided stand before any motor testing.
 - Double-check polarity and wire order before powering the system.
