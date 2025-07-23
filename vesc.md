@@ -217,11 +217,12 @@ To communicate with the VESC, create a serial connection using the `serial.Seria
 Example:
 
 ```python
-import serial
 from pyvesc import VESC
+import serial
 
-ser = serial.Serial('/dev/ttyACM0', baudrate=115200, timeout=0.1)
-vesc = VESC(serial_port=ser)
+vesc = VESC(serial_port=serial.Serial('/dev/ttyACM0', baudrate=115200, timeout=0.1))
+print("Connected to VESC. Firmware version:", vesc.get_firmware_version())
+vesc.stop_heartbeat()
 ```
 
 &nbsp;
@@ -230,10 +231,15 @@ vesc = VESC(serial_port=ser)
 
 You can control motor speed using duty cycle commands.
 
-- Import the message: `from pyvesc.VESC.messages import SetDutyCycle`
-- Send a value between `-1.0` and `1.0`
-- Example to run the motor at 20% power: `ser.write(SetDutyCycle(0.2).serialize())`
-- To stop the motor: `ser.write(SetDutyCycle(0.0).serialize())`
+```python
+from pyvesc import VESC
+import time
+
+with VESC(serial_port='/dev/ttyACM0') as motor:
+    motor.set_duty_cycle(0.1)  # 10% power forward
+    time.sleep(2)
+    motor.set_duty_cycle(0.0)  # Stop
+```
 
 &nbsp;
 
@@ -241,10 +247,17 @@ You can control motor speed using duty cycle commands.
 
 To control a servo using the VESC’s PWM output:
 
-- Import the message: `from pyvesc.VESC.messages import SetServoPosition`
-- Use values between `0.0` and `1.0`
-- Center position: `ser.write(SetServoPosition(0.5).serialize())`
-- Minimum: `0.0`, maximum: `1.0`
+```python
+from pyvesc import VESC
+import time
+
+with VESC(serial_port='/dev/ttyACM0') as motor:
+    motor.set_servo(0.0)  # Min position
+    time.sleep(1)
+    motor.set_servo(1.0)  # Max position
+    time.sleep(1)
+    motor.set_servo(0.5)  # Center
+```
 
 > ⚠️ Ensure "Enable Servo Output" is set to `true` in VESC Tool as shown in section 3.2.5.
 
