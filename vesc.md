@@ -129,15 +129,22 @@ Select the **third option**.
 Then fill in the relevant information about your battery. Below are the details for the battery included in the kit.
 
 **Screenshot:**
-![Image](path/to/image_battery_info.png)
+![Image](./images/vesc_tool_motor_battery.png)
 
-Once you validate the battery info, you will see this pop-up. You can press OK if you entered the correct information.
+Once you validate the battery info, you will see this pop-up. 
 
-Enter the motor information as shown below.  
+![Image](./images/vesc_tool_motor_validate_battery.png)
+
+You can press OK if you entered the correct information.
+
+Enter the motor information as shown below.
+
 > ⚠️ Before continuing, make sure the car is placed on the provided stand and that the wheels are not touching the ground or any obstacles. The motor will spin during the process.
 
+Then press RUN DETECTION.
+
 **Screenshot:**
-![Image](path/to/image_motor_info.png)
+![Image](./images/vesc_tool_motor_validate_motor_info.png)
 
 After 30 seconds this message will appear saying the motor successfully spins.
 
