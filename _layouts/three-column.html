@@ -131,7 +131,28 @@
       list-style: none;
       padding-left: 0;
     }
-    
+
+    #toc .toc-level-1 {
+      padding-left: 0;
+    }
+
+    #toc .toc-level-2 {
+      padding-left: 1rem;
+    }
+
+    #toc .toc-level-3 {
+      padding-left: 2rem;
+    }
+
+    #toc .toc-level-4 {
+      padding-left: 3rem;
+    }
+
+    #toc .toc-level-5 {
+      padding-left: 4rem;
+    }
+
+
     #toc .toc-list-item {
       position: relative;
       margin: 0.25rem 0;
@@ -322,6 +343,8 @@
         // Create TOC list item
         const listItem = document.createElement('li');
         listItem.classList.add('toc-list-item');
+        const level = parseInt(heading.tagName.substring(1)); // Extract number from H1/H2/H3
+        listItem.classList.add(`toc-level-${level}`);
 
         const link = document.createElement('a');
         link.classList.add('toc-link');
