@@ -50,7 +50,7 @@ The VESC (Vedder Electronic Speed Controller) is an open-source motor controller
 
 #### 3.2.1 VESC Serial Connection {#vesc-serial-connection}
 
-1. **Open the VESC Tool**  
+1. **Open the VESC Tool**
    Locate and open the VESC Tool software you installed earlier on your computer with hardware setup connected to your laptop.
    When you first open the VESC Tool, you will be prompted to accept the Terms and Conditions (CGU). Make sure to read and accept them to proceed to the main interface.
 
@@ -108,15 +108,24 @@ The next step is to setup the motor. You have to go back to the main page and co
 To setup the motor, you need to press the following button.
 
 **Screenshot:**
-![Image](path/to/image_motor_setup_start.png)
+![Image](./images/vesc_tool_motor_start_setup.png)
 
-Then press Yes.  
+Then press Yes.
+
+**Screenshot:**
+![Image](./images/vesc_tool_motor_load_params.png)
+
 Then Next.
 
 **Screenshot:**
-![Image](path/to/image_motor_setup_wizard.png)
+![Image](./images/vesc_tool_motor_generic.png)
 
 Select the **third option**.  
+
+**Screenshot:**
+![Image](./images/vesc_tool_motor_medium_out_runner_setup.png)
+
+
 Then fill in the relevant information about your battery. Below are the details for the battery included in the kit.
 
 **Screenshot:**
