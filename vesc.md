@@ -8,106 +8,178 @@ permalink: /vesc-calibration/
 
 **An educational and research-ready platform for autonomous navigation**
 
-## Introduction {#introduction}
+---
 
-The VESC (Vedder Electronic Speed Controller) is an open-source motor controller for electric vehicles and robotics. Calibration ensures accurate sensor readings, smooth motor performance, and system optimization.
+## 1. Introduction {#introduction}
 
-## Required Tools and Software {#tools}
+The VESC (Vedder Electronic Speed Controller) is an open-source motor controller for electric vehicles and robotics. Calibration ensures precise sensor readings, smooth motor performance, and system optimization.
 
-- VESC included in your kit  
-- Micro-USB cable  
-- Computer (Windows, macOS, or Linux)  
-- [VESC Tool](https://vesc-project.com/)
+---
 
-## Configuration {#configuration}
+## 2. Required Tools and Software {#tools}
 
-### A. Hardware Setup {#hardware-setup}
+- The VESC included in your educational kit  
+- A micro-USB cable  
+- A computer (Windows, macOS, or Linux)  
+- The VESC Tool (free version available at [https://vesc-project.com/](https://vesc-project.com/))
+
+---
+
+## 3. Configuration {#configuration}
+
+### A. Hardware Setup {#hardware}
 
 1. **Power Connection**  
-   Connect the VESC to the 4S LiPo battery using an XT60 (or compatible) connector. Ensure correct polarity.
+   Connect the VESC to the 4S LiPo battery provided in the kit using the XT60 (or compatible) connector. Double-check polarity before connecting to avoid damage.
 
 2. **Motor Connection**  
-   Connect the three wires of the BLDC motor to the VESC. The order doesn't matter initially.
+   Connect the BLDC motor (already mounted on the Traxxas chassis) to the three-phase output wires of the VESC. The order of these wires doesn’t matter initially; it can be corrected later via motor detection.
 
 3. **Servo Motor Connection**  
-   Plug the servo motor into the PWM output port of the VESC.
+   Plug the servo motor into the PWM output of the VESC.
 
 4. **USB Connection**  
-   Connect the VESC to your laptop via USB.
+   Use the provided USB cable to connect the VESC to your laptop. This connection allows you to configure and flash the VESC using the VESC Tool.
 
-**Diagram:**  
-![Hardware Setup](./images/vesc_calibration_electric_diagram.png)
+**Diagram:**
+![Image](./images/vesc_calibration_electric_diagram.png)
 
 ---
 
-### B. VESC Tool Setup {#vesc-tool-setup}
+### B. VESC Tool Setup {#vesc-tool}
 
 1. **Open the VESC Tool**  
-   Launch the application and accept the terms and conditions.
+   Locate and open the VESC Tool software you installed earlier on your computer with hardware setup connected to your laptop.  
+   When you first open the VESC Tool, you will be prompted to accept the Terms and Conditions (CGU). Make sure to read and accept them to proceed to the main interface.
 
-   ![VESC Tool Home](path/to/vesc-tool-home.png)
+**Screenshot:**
+![Image](./images/vesc_tool_main_page.png)
 
-2. **Connect to VESC Device**  
-   Select your VESC from the list. Linux users may need to add themselves to the `dialout` group.
+2. **Connect to the Listed VESC Device**  
+   Once the VESC Tool is open, select your VESC device from the list to establish a connection. This allows the software to communicate directly with your hardware for flashing and configuration.  
 
-   ![VESC Connect](path/to/vesc-connect.png)
+   > **Note for Linux users:** You may need to add your user to the `dialout` group to enable USB access. The VESC Tool may prompt you to enter your password, and a system restart is required for the changes to take effect.
 
-3. **Firmware Update** (optional)  
-   If prompted, update the firmware using the Firmware Manager.
+**Screenshot:**
+![Image](./images/vesc_tool_serial_connection.png)
 
-   ![Firmware Manager](path/to/firmware-manager.png)  
-   ![Firmware Upload](path/to/firmware-confirmation.png)
+If a firmware update is available, a pop-up like the one below will appear.
 
-4. **Motor Setup**  
-   Reconnect the VESC, then go to motor setup:
-
-   - Select the third option
-   - Fill in battery information
-   - Confirm the configuration
-
-   ![Battery Info](path/to/battery-info.png)
-
-   - Enter motor specifications  
-   - Ensure wheels are elevated on a stand  
-
-   ![Motor Info](path/to/motor-info.png)
-
-   - After motor spins, confirm success
-
-   ![Motor Success](path/to/motor-success.png)
-
-   - Go to **Motor Settings > General**, switch from FOC to **BLDC**
-   - Save configuration
-
-   ![Write Configuration](path/to/write-configuration.png)
+**Screenshot:**
+![Image](./images/vesc_tool_firmware_update_message.png)
 
 ---
 
-## Motor Test {#motor-test}
+### 3. Firmware Update {#firmware}
 
-You can test the motor by pressing the motor test button and using the arrow keys on your keyboard.
+This step is optional and only needed if the firmware update message appears during connection.
 
-![Motor Test](path/to/motor-test.png)
+Click the icons shown below to open the Firmware Manager window.
+
+**Screenshot:**
+![Image](./images/vesc_tool_firmware_manager.png)
+
+Here is what you will see after clicking on the firmware icon.
+
+**Screenshot:**
+![Image](./images/vesc_tool_firmware_update_window.png)
+
+To update the firmware, you have to press the following button,
+
+![Image](./images/vesc_tool_firmware_update_all.png)
+
+Then press Yes.  
+
+![Image](./images/vesc_tool_firmware_accept_update.png)
+
+After waiting a few minutes, this message will appear, and your new firmware will be uploaded.
+
+**Screenshot:**
+![Image](./images/vesc_tool_firmware_update_done.png)
 
 ---
 
-## Servo Setup {#servo-setup}
+### 4. Motor Setup {#motor-setup}
+
+The next step is to setup the motor. You have to go back to the main page and connect to the VESC again, because the firmware update restarts the VESC.
+
+To setup the motor, you need to press the following button.
+
+**Screenshot:**
+![Image](path/to/image_motor_setup_start.png)
+
+Then press Yes.  
+Then Next.
+
+**Screenshot:**
+![Image](path/to/image_motor_setup_wizard.png)
+
+Select the **third option**.  
+Then fill in the relevant information about your battery. Below are the details for the battery included in the kit.
+
+**Screenshot:**
+![Image](path/to/image_battery_info.png)
+
+Once you validate the battery info, you will see this pop-up. You can press OK if you entered the correct information.
+
+Enter the motor information as shown below.  
+> ⚠️ Before continuing, make sure the car is placed on the provided stand and that the wheels are not touching the ground or any obstacles. The motor will spin during the process.
+
+**Screenshot:**
+![Image](path/to/image_motor_info.png)
+
+After 30 seconds this message will appear saying the motor successfully spins.
+
+**Screenshot:**
+![Image](path/to/image_motor_success.png)
+
+Next, go to **Motor Settings > General** and select **BLDC** instead of FOC.
+
+**Screenshot:**
+![Image](path/to/image_bldc_selection.png)
+
+To finish, you can press the following button to write all your previous configurations on the VESC.
+
+**Screenshot:**
+![Image](path/to/image_write_config.png)
+
+---
+
+### 5. Motor Test {#motor-test}
+
+To test if the motor is usable with the VESC, press the following button and then use your keyboard arrow keys.
+
+**Screenshot:**
+![Image](path/to/image_motor_test.png)
+
+---
+
+### 6. Servo Setup {#servo-setup}
+
+To setup the servo motor:
 
 - Go to **App Settings > General**
-- Enable **Servo Output**
-- Save and go to the test tab
+- Set **Enable Servo Output** to `true`
+- Press the following button on the right of the image
 
-![Servo Setup](path/to/servo-setup.png)  
-![Servo Test](path/to/servo-test.png)
+**Screenshot:**
+![Image](path/to/image_servo_enable.png)
+
+After that, you can test in the following tab.
+
+**Screenshot:**
+![Image](path/to/image_servo_test.png)
+
+Once you are on this page, you can test by moving the cursor.
 
 ---
 
-## Notes {#notes}
+## ✅ Notes
 
-- Always place the car on a stand before spinning the motor
-- Double-check all power and motor connections before operation
-- If using Linux, ensure USB permissions are set correctly (`dialout` group)
+- Always elevate the car on the provided stand before any motor testing.
+- Double-check polarity and wire order before powering the system.
+- For Linux users, be sure to configure USB permissions properly (`dialout` group).
 
-&nbsp;
+---
 
-To report problems or suggest improvements to this calibration guide, open an issue or submit a pull request in the corresponding Git repository. Please include any screenshots or log outputs when applicable to ensure effective troubleshooting and updates.
+To contribute improvements or report issues with this calibration guide, please use the GitHub repository’s issues tab or submit a pull request.
