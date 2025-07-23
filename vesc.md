@@ -42,7 +42,7 @@ The VESC (Vedder Electronic Speed Controller) is an open-source motor controller
    Use the provided USB cable to connect the VESC to your laptop. This connection allows you to configure and flash the VESC using the VESC Tool.
 
 **Diagram:**
-![Image](./images/vesc_calibration_electric_diagram.png)
+![Image](./images/vesc/vesc_calibration_electric_diagram.png)
 
 &nbsp;
 
@@ -54,21 +54,18 @@ The VESC (Vedder Electronic Speed Controller) is an open-source motor controller
    Locate and open the VESC Tool software you installed earlier on your computer with hardware setup connected to your laptop.
    When you first open the VESC Tool, you will be prompted to accept the Terms and Conditions (CGU). Make sure to read and accept them to proceed to the main interface.
 
-**Screenshot:**
-![Image](./images/vesc_tool_main_page.png)
+![Image](./images/vesc/vesc_tool_main_page.png)
 
 2. **Connect to the Listed VESC Device**
    Once the VESC Tool is open, select your VESC device from the list to establish a connection. This allows the software to communicate directly with your hardware for flashing and configuration.
 
    > **Note for Linux users:** You may need to add your user to the `dialout` group to enable USB access. The VESC Tool may prompt you to enter your password, and a system restart is required for the changes to take effect.
 
-**Screenshot:**
-![Image](./images/vesc_tool_serial_connection.png)
+![Image](./images/vesc/vesc_tool_serial_connection.png)
 
 If a firmware update is available, a pop-up like the one below will appear.
 
-**Screenshot:**
-![Image](./images/vesc_tool_firmware_update_message.png)
+![Image](./images/vesc/vesc_tool_firmware_update_message.png)
 
 &nbsp;
 
@@ -78,26 +75,23 @@ This step is optional and only needed if the firmware update message appears dur
 
 Click the icons shown below to open the Firmware Manager window.
 
-**Screenshot:**
-![Image](./images/vesc_tool_firmware_manager.png)
+![Image](./images/vesc/vesc_tool_firmware_manager.png)
 
 Here is what you will see after clicking on the firmware icon.
 
-**Screenshot:**
-![Image](./images/vesc_tool_firmware_update_window.png)
+![Image](./images/vesc/vesc_tool_firmware_update_window.png)
 
 To update the firmware, you have to press the following button,
 
-![Image](./images/vesc_tool_firmware_update_all.png)
+![Image](./images/vesc/vesc_tool_firmware_update_all.png)
 
 Then press Yes.
 
-![Image](./images/vesc_tool_firmware_accept_update.png)
+![Image](./images/vesc/vesc_tool_firmware_accept_update.png)
 
 After waiting a few minutes, this message will appear, and your new firmware will be uploaded.
 
-**Screenshot:**
-![Image](./images/vesc_tool_firmware_update_done.png)
+![Image](./images/vesc/vesc_tool_firmware_update_done.png)
 
 &nbsp;
 
@@ -107,33 +101,30 @@ The next step is to setup the motor. You have to go back to the main page and co
 
 To setup the motor, you need to press the following button.
 
-**Screenshot:**
-![Image](./images/vesc_tool_motor_start_setup.png)
+![Image](./images/vesc/vesc_tool_motor_start_setup.png)
 
 Then press Yes.
 
-**Screenshot:**
-![Image](./images/vesc_tool_motor_load_params.png)
+![Image](./images/vesc/vesc_tool_motor_load_params.png)
 
 Then Next.
 
-**Screenshot:**
-![Image](./images/vesc_tool_motor_generic.png)
+![Image](./images/vesc/vesc_tool_motor_generic.png)
 
-Select the **third option**.  
+Select the **third option**.
 
-**Screenshot:**
-![Image](./images/vesc_tool_motor_medium_out_runner_setup.png)
+
+![Image](./images/vesc/vesc_tool_motor_medium_out_runner_setup.png)
 
 
 Then fill in the relevant information about your battery. Below are the details for the battery included in the kit.
 
-**Screenshot:**
-![Image](./images/vesc_tool_motor_battery.png)
 
-Once you validate the battery info, you will see this pop-up. 
+![Image](./images/vesc/vesc_tool_motor_battery.png)
 
-![Image](./images/vesc_tool_motor_validate_battery.png)
+Once you validate the battery info, you will see this pop-up.
+
+![Image](./images/vesc/vesc_tool_motor_validate_battery.png)
 
 You can press OK if you entered the correct information.
 
@@ -143,23 +134,23 @@ Enter the motor information as shown below.
 
 Then press RUN DETECTION.
 
-**Screenshot:**
-![Image](./images/vesc_tool_motor_validate_motor_info.png)
+
+![Image](./images/vesc/vesc_tool_motor_validate_motor_info.png)
 
 After 30 seconds this message will appear saying the motor successfully spins.
 
-**Screenshot:**
-![Image](path/to/image_motor_success.png)
+
+![Image](./images/vesc/vesc_tool_motor_sucess.png)
 
 Next, go to **Motor Settings > General** and select **BLDC** instead of FOC.
 
-**Screenshot:**
-![Image](path/to/image_bldc_selection.png)
+
+![Image](./images/vesc/vesc_tool_motor_select_bldc.png)
 
 To finish, you can press the following button to write all your previous configurations on the VESC.
 
-**Screenshot:**
-![Image](path/to/image_write_config.png)
+
+![Image](./images/vesc/vesc_tool_motor_write_config.png)
 
 &nbsp;
 
@@ -167,8 +158,8 @@ To finish, you can press the following button to write all your previous configu
 
 To test if the motor is usable with the VESC, press the following button and then use your keyboard arrow keys.
 
-**Screenshot:**
-![Image](path/to/image_motor_test.png)
+
+![Image](./images/vesc/vesc_tool_motor_test.png)
 
 &nbsp;
 
@@ -180,13 +171,13 @@ To setup the servo motor:
 - Set **Enable Servo Output** to `true`
 - Press the following button on the right of the image
 
-**Screenshot:**
-![Image](path/to/image_servo_enable.png)
+
+![Image](./images/vesc/enable_servo.png)
 
 After that, you can test in the following tab.
 
-**Screenshot:**
-![Image](path/to/image_servo_test.png)
+![Image](./images/vesc/test_servo.png)
+![Image](./images/vesc/move_servo.png)
 
 Once you are on this page, you can test by moving the cursor.
 
