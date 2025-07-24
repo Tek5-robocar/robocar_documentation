@@ -276,10 +276,4 @@ For advanced use, such as reading telemetry (voltage, RPM, current), refer to th
 
 ## 5. Notes {#notes}
 
-- Always elevate the car on the provided stand before any motor testing.
-- Double-check polarity and wire order before powering the system.
-- For Linux users, be sure to configure USB permissions properly (`dialout` group).
-
-&nbsp;
-
 To contribute improvements or report issues with this calibration guide, please use the GitHub repository’s issues tab or submit a pull request.
