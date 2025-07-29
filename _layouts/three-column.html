@@ -2,23 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ page.title }}</title>
+  <title>{{ page.title }} | {{ site.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <style>
     :root {
       --sidebar-bg: #f8f9fa;
       --toc-active-bg: #eaf3ff;
       --border-color: #dee2e6;
-      --primary-color: #0366d6;
+      --primary-color: #3a86ff;
+      --secondary-color: #ff006e;
       --text-color: #333;
+      --text-light: #6c757d;
+      --success-color: #06d6a0;
+      --warning-color: #ffd166;
+      --danger-color: #ef476f;
+      --dark-bg: #2b2d42;
+      --light-bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --transition: all 0.3s ease;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
     }
 
-    .main-content img {
-      max-width: 80%;
-      height: auto;
-      display: block;
-      margin: 1rem auto;
+    .dark-mode {
+      --sidebar-bg: #1e1f2b;
+      --toc-active-bg: #2a3a5e;
+      --border-color: #3a3d4f;
+      --primary-color: #5a9cff;
+      --text-color: #e9ecef;
+      --text-light: #a3a8b8;
+      --card-bg: #252837;
+      --dark-bg: #1a1b25;
+      --light-bg: #1e1f2b;
     }
 
     * {
@@ -33,22 +52,53 @@
       line-height: 1.6;
       height: 100vh;
       overflow: hidden;
-      background: #f5f7fa;
+      background: var(--light-bg);
+      transition: var(--transition);
     }
     
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 100px;
     }
     
-    h1, h2, h3 {
+    h1, h2, h3, h4, h5, h6 {
       margin-top: 1.5rem;
       margin-bottom: 1rem;
       scroll-margin-top: 100px;
+      font-weight: 600;
+    }
+    
+    h1 {
+      font-size: 2.25rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    h1:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+    
+    h2 {
+      font-size: 1.75rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
     }
     
     .container {
       display: flex;
       height: 100vh;
+      transition: var(--transition);
     }
     
     /* Left Sidebar Styles */
@@ -56,16 +106,19 @@
       width: 20%;
       background: var(--sidebar-bg);
       border-right: 1px solid var(--border-color);
-      padding: 1.5rem;
+      padding: 1.5rem 1rem;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
     }
     
     .sidebar h2 {
-      font-size: 1.2rem;
-      margin: 1rem 0 0.5rem 0;
-      color: #555;
+      font-size: 1.1rem;
+      margin: 1.5rem 0 0.8rem 0;
+      color: var(--text-light);
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid var(--border-color);
     }
     
     .sidebar ul {
@@ -73,20 +126,23 @@
     }
     
     .sidebar li {
-      margin: 0.5rem 0;
+      margin: 0.4rem 0;
     }
     
     .sidebar a {
       text-decoration: none;
-      color: #444;
-      display: block;
-      padding: 0.5rem 0.8rem;
-      border-radius: 4px;
-      transition: all 0.2s;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      font-size: 0.95rem;
     }
     
     .sidebar a:hover {
-      background-color: #e9ecef;
+      background-color: rgba(0,0,0,0.05);
       color: var(--primary-color);
     }
     
@@ -94,15 +150,26 @@
       background-color: var(--toc-active-bg);
       color: var(--primary-color);
       font-weight: 500;
+      box-shadow: var(--shadow-sm);
     }
     
     /* Main Content Styles */
     .main-content {
       width: 60%;
-      padding: 2rem;
+      padding: 2.5rem 3rem;
       overflow-y: auto;
-      background: white;
-      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      background: var(--card-bg);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+    
+    .main-content img {
+      max-width: 80%;
+      height: auto;
+      display: block;
+      margin: 1.5rem auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
     }
     
     /* Right TOC Styles */
@@ -110,21 +177,29 @@
       width: 20%;
       background: var(--sidebar-bg);
       border-left: 1px solid var(--border-color);
-      padding: 1.5rem;
+      padding: 1.5rem 1rem;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
     }
     
     .toc-sidebar h2 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-bottom: 1rem;
-      color: #555;
+      color: var(--text-light);
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     
     /* Custom TOC Styles */
     #toc {
       position: relative;
+      overflow-y: auto;
+      flex-grow: 1;
     }
     
     #toc .toc-list {
@@ -152,7 +227,6 @@
       padding-left: 4rem;
     }
 
-
     #toc .toc-list-item {
       position: relative;
       margin: 0.25rem 0;
@@ -160,26 +234,27 @@
     
     #toc .toc-link {
       text-decoration: none;
-      color: #555;
+      color: var(--text-color);
       display: block;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      transition: all 0.2s;
-      font-size: 0.95rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      font-size: 0.9rem;
+      position: relative;
     }
     
     #toc .toc-link:hover {
-      background-color: #e9ecef;
+      background-color: rgba(0,0,0,0.05);
       color: var(--primary-color);
     }
     
     /* Active TOC link styling */
     #toc .is-active-link {
-      font-weight: bold !important;
+      font-weight: 600 !important;
       color: var(--primary-color) !important;
       background-color: var(--toc-active-bg) !important;
       border-left: 3px solid var(--primary-color) !important;
-      padding-left: 12px !important;
+      padding-left: 15px !important;
     }
     
     /* Mobile Responsiveness */
@@ -193,104 +268,342 @@
         height: auto;
       }
       
+      .sidebar {
+        padding: 1rem;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+      }
+      
+      .sidebar.active {
+        left: 0;
+      }
+      
       .toc-sidebar {
         position: fixed;
-        bottom: 0;
-        left: 0;
-        height: 250px;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        z-index: 1000;
+        transition: right 0.3s ease;
+        box-shadow: var(--shadow-lg);
+      }
+      
+      .toc-sidebar.active {
+        right: 0;
+      }
+      
+      .mobile-menu-toggle {
+        display: flex;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
         z-index: 100;
-        display: none;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
       }
       
       .mobile-toc-toggle {
-        display: block;
+        display: flex;
         position: fixed;
-        bottom: 20px;
+        top: 20px;
         right: 20px;
         background: var(--primary-color);
         color: white;
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        z-index: 101;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 100;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+      }
+      
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+        display: none;
+      }
+      
+      .overlay.active {
+        display: block;
+      }
+      
+      .main-content {
+        padding: 5rem 1.5rem 2rem;
       }
     }
     
     /* Logo and branding */
     .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
+      font-size: 1.4rem;
+      font-weight: 700;
       margin-bottom: 1.5rem;
       color: var(--primary-color);
       display: flex;
       align-items: center;
       gap: 10px;
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
     }
     
     .logo svg {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
     }
     
     /* Scrollbar styling */
-    .main-content::-webkit-scrollbar {
+    .main-content::-webkit-scrollbar,
+    #toc::-webkit-scrollbar {
       width: 8px;
     }
     
-    .main-content::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-    
-    .main-content::-webkit-scrollbar-thumb {
-      background: #c1c1c1;
+    .main-content::-webkit-scrollbar-track,
+    #toc::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.05);
       border-radius: 4px;
     }
     
-    .main-content::-webkit-scrollbar-thumb:hover {
-      background: #a8a8a8;
+    .main-content::-webkit-scrollbar-thumb,
+    #toc::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.15);
+      border-radius: 4px;
+    }
+    
+    .main-content::-webkit-scrollbar-thumb:hover,
+    #toc::-webkit-scrollbar-thumb:hover {
+      background: rgba(0,0,0,0.25);
     }
 
-    /* Table styling for BOM */
+    /* Table styling */
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 1rem;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
     }
     
     th, td {
       border: 1px solid var(--border-color);
-      padding: 0.5rem;
+      padding: 0.8rem 1rem;
       text-align: left;
     }
     
     th {
       background-color: var(--sidebar-bg);
-      font-weight: bold;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+    
+    tr:nth-child(even) {
+      background-color: rgba(0,0,0,0.02);
     }
 
     pre, code {
       font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      background-color: #f6f8fa;
+      background-color: var(--sidebar-bg);
       padding: 0.5rem;
-      border-radius: 6px;
+      border-radius: var(--radius-sm);
       font-size: 0.9rem;
+      border: 1px solid var(--border-color);
     }
 
     pre {
       overflow: auto;
-      margin: 1rem 0;
-      padding: 1rem;
+      margin: 1.5rem 0;
+      padding: 1.2rem;
+      box-shadow: var(--shadow-sm);
     }
 
     code {
-      background-color: #eee;
+      background-color: var(--sidebar-bg);
+      padding: 0.2rem 0.4rem;
+    }
+    
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 101;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+    
+    /* Content cards */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+    }
+    
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    
+    /* Alerts */
+    .alert {
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      margin: 1.5rem 0;
+    }
+    
+    .alert-info {
+      background-color: #e1f0fa;
+      border-left: 4px solid var(--primary-color);
+    }
+    
+    .alert-warning {
+      background-color: #fff8e1;
+      border-left: 4px solid var(--warning-color);
+    }
+    
+    .alert-success {
+      background-color: #e6f7ee;
+      border-left: 4px solid var(--success-color);
+    }
+    
+    .alert-danger {
+      background-color: #fdeded;
+      border-left: 4px solid var(--danger-color);
+    }
+    
+    /* Search box */
+    .search-box {
+      margin: 1.5rem 0;
+      position: relative;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 0.8rem 1rem 0.8rem 40px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--card-bg);
+      color: var(--text-color);
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+    }
+    
+    /* Breadcrumbs */
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    
+    .breadcrumbs a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+    
+    .breadcrumbs span {
+      margin: 0 8px;
+    }
+    
+    /* Status badges */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-left: 8px;
+    }
+    
+    .badge-new {
+      background: var(--success-color);
+      color: white;
+    }
+    
+    .badge-updated {
+      background: var(--warning-color);
+      color: #333;
+    }
+    
+    .badge-deprecated {
+      background: var(--danger-color);
+      color: white;
+    }
+    
+    /* Page header */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .page-description {
+      color: var(--text-light);
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    /* TOC progress indicator */
+    .toc-progress {
+      height: 4px;
+      background: rgba(0,0,0,0.1);
+      border-radius: 2px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    
+    .toc-progress-inner {
+      height: 100%;
+      width: 0;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
     }
   </style>
 </head>
@@ -303,6 +616,10 @@
           <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 2v14h14V5H5zm4 2h2v6H9V7zm6 0h-2v6h2V7z"/>
         </svg>
         <span>{{ site.title }}</span>
+      </div>
+      
+      <div class="search-box">
+        <input type="text" placeholder="Search documentation...">
       </div>
       
       <h2>Navigation</h2>
@@ -321,49 +638,81 @@
 
     <!-- Center: Main Content - Scrollable -->
     <main id="main-content" class="main-content">
-      <h1 class="page-title">{{ page.title }}</h1>
+      <div class="page-header">
+        <h1 class="page-title">{{ page.title }}</h1>
+        <p class="page-description">{{ page.description }}</p>
+      </div>
+      
+      <div class="breadcrumbs">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span>{{ page.title }}</span>
+      </div>
+      
+      <div class="alert alert-info">
+        <strong>Pro Tip:</strong> Use the search feature to quickly find documentation on specific topics. You can also use the table of contents on the right to navigate this page.
+      </div>
+      
       {{ content }}
     </main>
 
     <!-- Right Sidebar: Table of Contents - Fixed -->
     <nav class="toc-sidebar">
       <h2>On This Page</h2>
+      <div class="toc-progress">
+        <div class="toc-progress-inner"></div>
+      </div>
       <div id="toc">
         <ul class="toc-list"></ul>
       </div>
     </nav>
   </div>
 
-  <!-- Mobile TOC Toggle Button -->
-  <div class="mobile-toc-toggle" onclick="toggleToc()">
+  <!-- Mobile Toggle Buttons -->
+  <div class="mobile-menu-toggle" onclick="toggleSidebar()">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M3 6h18M3 12h18M3 18h18"/>
     </svg>
   </div>
+  
+  <div class="mobile-toc-toggle" onclick="toggleToc()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+    </svg>
+  </div>
 
-  <!-- Custom JavaScript for TOC and Synchronization -->
+  <!-- Overlay for mobile -->
+  <div class="overlay" onclick="closeAll()"></div>
+
+  <!-- Theme Toggle -->
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </div>
+
+  <!-- Custom JavaScript -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Generate TOC
       const tocList = document.querySelector('#toc .toc-list');
       const mainContent = document.querySelector('#main-content');
-      const headings = mainContent.querySelectorAll('h1, h2, h3');
-
+      const headings = mainContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      const progressBar = document.querySelector('.toc-progress-inner');
+      
+      // Skip the page title
       headings.forEach(heading => {
-        // Skip the page title (h1.page-title)
         if (heading.classList.contains('page-title')) return;
-
-        // Ensure heading has an ID
+        
         if (!heading.id) {
           heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
         }
-
-        // Create TOC list item
+        
         const listItem = document.createElement('li');
         listItem.classList.add('toc-list-item');
-        const level = parseInt(heading.tagName.substring(1)); // Extract number from H1/H2/H3
+        const level = parseInt(heading.tagName.substring(1));
         listItem.classList.add(`toc-level-${level}`);
-
+        
         const link = document.createElement('a');
         link.classList.add('toc-link');
         link.href = `#${heading.id}`;
@@ -371,112 +720,79 @@
         link.addEventListener('click', (e) => {
           e.preventDefault();
           document.getElementById(heading.id).scrollIntoView({ behavior: 'smooth' });
-          // Update active TOC link
           document.querySelectorAll('#toc .is-active-link').forEach(l => l.classList.remove('is-active-link'));
           link.classList.add('is-active-link');
         });
-
+        
         listItem.appendChild(link);
         tocList.appendChild(listItem);
       });
-
-      // Handle sidebar link clicks
-      const sidebarLinks = document.querySelectorAll('.sidebar a');
-      sidebarLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-          // Remove existing active TOC links
-          document.querySelectorAll('#toc .is-active-link').forEach(activeLink => {
-            activeLink.classList.remove('is-active-link');
-          });
-
-          // Find the TOC link that matches the data-toc-id
-          const tocId = this.getAttribute('data-toc-id');
-          if (tocId) {
-            const tocLink = document.querySelector(`#toc .toc-link[href="#${tocId}"]`);
-            if (tocLink) {
-              tocLink.classList.add('is-active-link');
-              // Scroll to the section
-              const targetSection = document.getElementById(tocId);
-              if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                console.warn(`No section found for tocId: ${tocId}`);
-              }
-            } else {
-              console.warn(`No TOC link found for tocId: ${tocId}`);
-            }
-          } else {
-            console.warn('No tocId found for sidebar link');
-          }
-        });
-      });
-
-      // Set initial TOC active link based on active sidebar link
-      const activeSidebarLink = document.querySelector('.sidebar a.active');
-      if (activeSidebarLink) {
-        const tocId = activeSidebarLink.getAttribute('data-toc-id');
-        if (tocId) {
-          const tocLink = document.querySelector(`#toc .toc-link[href="#${tocId}"]`);
-          if (tocLink) {
-            tocLink.classList.add('is-active-link');
-            // Scroll to the section on page load
-            const targetSection = document.getElementById(tocId);
-            if (targetSection) {
-              targetSection.scrollIntoView({ behavior: 'smooth' });
-            } else {
-              console.warn(`No section found for tocId: ${tocId}`);
-            }
-          } else {
-            console.warn(`No TOC link found for tocId: ${tocId}`);
-          }
-        } else {
-          console.warn('No tocId found for active sidebar link');
-        }
+      
+      // Set initial active link
+      if (headings.length > 0) {
+        const firstHeading = headings[0];
+        const firstLink = document.querySelector(`#toc .toc-link[href="#${firstHeading.id}"]`);
+        if (firstLink) firstLink.classList.add('is-active-link');
       }
-
-      // Throttle function to limit scroll event frequency
-      function throttle(fn, wait) {
-        let time = Date.now();
-        return function() {
-          if ((time + wait - Date.now()) < 0) {
-            fn();
-            time = Date.now();
-          }
-        };
-      }
-
-      // Update TOC active link on scroll
-      mainContent.addEventListener('scroll', throttle(() => {
+      
+      // Scroll progress tracking
+      mainContent.addEventListener('scroll', function() {
+        const scrollHeight = mainContent.scrollHeight - mainContent.clientHeight;
+        const scrolled = (mainContent.scrollTop / scrollHeight) * 100;
+        progressBar.style.width = `${scrolled}%`;
+        
+        // Update active TOC link
         let currentHeading = null;
         let closestDistance = Infinity;
-
+        
         headings.forEach(heading => {
           if (heading.classList.contains('page-title')) return;
           const rect = heading.getBoundingClientRect();
           const distance = Math.abs(rect.top);
-          // Consider headings within the viewport or near the top
           if (rect.top >= -heading.offsetHeight && rect.top <= window.innerHeight / 2 && distance < closestDistance) {
             currentHeading = heading;
             closestDistance = distance;
           }
         });
-
+        
         if (currentHeading) {
           document.querySelectorAll('#toc .is-active-link').forEach(l => l.classList.remove('is-active-link'));
           const tocLink = document.querySelector(`#toc .toc-link[href="#${currentHeading.id}"]`);
-          if (tocLink) {
-            tocLink.classList.add('is-active-link');
-          } else {
-            console.warn(`No TOC link found for heading ID: ${currentHeading.id}`);
-          }
+          if (tocLink) tocLink.classList.add('is-active-link');
         }
-      }, 100));
+      });
+      
+      // Set initial scroll position
+      mainContent.scrollTop = 0;
     });
-
-    // Mobile TOC toggle function
+    
+    // Mobile menu functions
+    function toggleSidebar() {
+      document.querySelector('.sidebar').classList.toggle('active');
+      document.querySelector('.overlay').classList.toggle('active');
+    }
+    
     function toggleToc() {
-      const tocSidebar = document.querySelector('.toc-sidebar');
-      tocSidebar.style.display = tocSidebar.style.display === 'block' ? 'none' : 'block';
+      document.querySelector('.toc-sidebar').classList.toggle('active');
+      document.querySelector('.overlay').classList.toggle('active');
+    }
+    
+    function closeAll() {
+      document.querySelector('.sidebar').classList.remove('active');
+      document.querySelector('.toc-sidebar').classList.remove('active');
+      document.querySelector('.overlay').classList.remove('active');
+    }
+    
+    // Theme toggle function
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    }
+    
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
     }
   </script>
 </body>
