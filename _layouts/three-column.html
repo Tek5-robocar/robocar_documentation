@@ -907,7 +907,8 @@
         // Filter results
         const results = searchIndex.filter(item =>
           (item.title && item.title.toLowerCase().includes(query)) ||
-          (item.excerpt && item.excerpt.toLowerCase().includes(query))
+          (item.excerpt && item.excerpt.toLowerCase().includes(query)) ||
+          (item.content && item.content.toLowerCase().includes(query))
         );
 
         console.log(`Found ${results.length} results.`);
