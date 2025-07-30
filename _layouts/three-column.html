@@ -687,13 +687,7 @@
         </svg>
         <span>{{ site.title }}</span>
       </div>
-      
-      <div class="search-box">
-        <i class="fas fa-search"></i>
-        <input type="text" id="search-input" placeholder="Search documentation...">
-        <div id="search-results"></div>
-      </div>
-      
+
       <h2>Navigation</h2>
       <ul>
         {% for item in site.data.navigation %}
@@ -714,17 +708,14 @@
         <h1 class="page-title">{{ page.title }}</h1>
         <p class="page-description">{{ page.description }}</p>
       </div>
-      
       <div class="breadcrumbs">
         <a href="/">Home</a>
         <span>/</span>
         <span>{{ page.title }}</span>
       </div>
-      
       <div class="alert alert-info">
-        <strong>Pro Tip:</strong> Use the search feature to quickly find documentation on specific topics. You can also use the table of contents on the right to navigate this page.
+        <strong>Pro Tip:</strong> Use the table of contents on the right to navigate this page.
       </div>
-      
       {{ content }}
     </main>
 
@@ -740,52 +731,43 @@
     </nav>
   </div>
 
-  <!-- Mobile Toggle Buttons -->
+  <!-- Mobile Toggle Buttons and Theme -->
   <div class="mobile-menu-toggle" onclick="toggleSidebar()">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M3 6h18M3 12h18M3 18h18"/>
     </svg>
   </div>
-  
+
   <div class="mobile-toc-toggle" onclick="toggleToc()">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
     </svg>
   </div>
 
-  <!-- Overlay for mobile -->
   <div class="overlay" onclick="closeAll()"></div>
 
-  <!-- Theme Toggle -->
   <div class="theme-toggle" onclick="toggleTheme()">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
     </svg>
   </div>
 
-  <!-- Custom JavaScript -->
   <script>
-    // Search functionality implementation
     document.addEventListener('DOMContentLoaded', function() {
-      // Generate TOC
       const tocList = document.querySelector('#toc .toc-list');
       const mainContent = document.querySelector('#main-content');
       const headings = mainContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
       const progressBar = document.querySelector('.toc-progress-inner');
-      
-      // Skip the page title
+
       headings.forEach(heading => {
         if (heading.classList.contains('page-title')) return;
-        
         if (!heading.id) {
           heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
         }
-        
         const listItem = document.createElement('li');
         listItem.classList.add('toc-list-item');
         const level = parseInt(heading.tagName.substring(1));
         listItem.classList.add(`toc-level-${level}`);
-        
         const link = document.createElement('a');
         link.classList.add('toc-link');
         link.href = `#${heading.id}`;
@@ -796,28 +778,23 @@
           document.querySelectorAll('#toc .is-active-link').forEach(l => l.classList.remove('is-active-link'));
           link.classList.add('is-active-link');
         });
-        
         listItem.appendChild(link);
         tocList.appendChild(listItem);
       });
-      
-      // Set initial active link
+
       if (headings.length > 0) {
         const firstHeading = headings[0];
         const firstLink = document.querySelector(`#toc .toc-link[href="#${firstHeading.id}"]`);
         if (firstLink) firstLink.classList.add('is-active-link');
       }
-      
-      // Scroll progress tracking
+
+      mainContent.scrollTop = 0;
       mainContent.addEventListener('scroll', function() {
         const scrollHeight = mainContent.scrollHeight - mainContent.clientHeight;
         const scrolled = (mainContent.scrollTop / scrollHeight) * 100;
         progressBar.style.width = `${scrolled}%`;
-        
-        // Update active TOC link
         let currentHeading = null;
         let closestDistance = Infinity;
-        
         headings.forEach(heading => {
           if (heading.classList.contains('page-title')) return;
           const rect = heading.getBoundingClientRect();
@@ -827,155 +804,39 @@
             closestDistance = distance;
           }
         });
-        
         if (currentHeading) {
           document.querySelectorAll('#toc .is-active-link').forEach(l => l.classList.remove('is-active-link'));
           const tocLink = document.querySelector(`#toc .toc-link[href="#${currentHeading.id}"]`);
           if (tocLink) tocLink.classList.add('is-active-link');
         }
       });
-      
-      // Set initial scroll position
-      mainContent.scrollTop = 0;
-      
-      // Initialize search functionality
-      initSearch();
     });
-    
-    // Mobile menu functions
+
     function toggleSidebar() {
       document.querySelector('.sidebar').classList.toggle('active');
       document.querySelector('.overlay').classList.toggle('active');
     }
-    
+
     function toggleToc() {
       document.querySelector('.toc-sidebar').classList.toggle('active');
       document.querySelector('.overlay').classList.toggle('active');
     }
-    
+
     function closeAll() {
       document.querySelector('.sidebar').classList.remove('active');
       document.querySelector('.toc-sidebar').classList.remove('active');
       document.querySelector('.overlay').classList.remove('active');
     }
-    
-    // Theme toggle function
+
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
       const isDarkMode = document.body.classList.contains('dark-mode');
       localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
     }
-    
-    // Load saved theme
+
     if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark-mode');
     }
-    
-    // Search functionality
-    function initSearch() {
-      const searchInput = document.getElementById('search-input');
-      const searchResults = document.getElementById('search-results');
-      let searchIndex = [];
-      let lastSearchTime = 0;
-      const searchDelay = 300;
-
-      fetch('{{ site.baseurl }}/search.json')
-        .then(res => res.json())
-        .then(data => searchIndex = data);
-
-      function escapeRegExp(string) {
-        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      }
-
-      function createSnippets(text, query, maxSnippets = 3, snippetLength = 100) {
-        if (!text || !query) return [];
-
-        const escapedQuery = escapeRegExp(query);
-        const regex = new RegExp(escapedQuery, 'gi');
-        const snippets = new Set();  // Use Set to auto-deduplicate
-        let match;
-        let lastIndex = 0;
-
-        while ((match = regex.exec(text)) !== null && snippets.size < maxSnippets) {
-          const start = Math.max(lastIndex, match.index - Math.floor(snippetLength / 2));
-          const end = Math.min(text.length, match.index + match[0].length + Math.floor(snippetLength / 2));
-          let snippet = text.substring(start, end).trim();
-
-          // Highlight match
-          snippet = snippet.replace(regex, '<span class="highlight">$&</span>');
-
-          // Add ellipsis if not full sentence
-          if (start > 0) snippet = '...' + snippet;
-          if (end < text.length) snippet = snippet + '...';
-
-          // Only add if it's not already in the set
-          snippets.add(snippet);
-          lastIndex = end;
-        }
-
-        return Array.from(snippets);
-      }
-
-      function performSearch() {
-        const query = searchInput.value.trim();
-        const currentTime = Date.now();
-        if (currentTime - lastSearchTime < searchDelay) return;
-        lastSearchTime = currentTime;
-
-        if (query.length < 2) {
-          searchResults.innerHTML = '';
-          searchResults.classList.remove('active');
-          return;
-        }
-
-        const results = searchIndex.filter(item =>
-          (item.title && item.title.toLowerCase().includes(query.toLowerCase())) ||
-          (item.excerpt && item.excerpt.toLowerCase().includes(query.toLowerCase())) ||
-          (item.content && item.content.toLowerCase().includes(query.toLowerCase()))
-        );
-
-        searchResults.innerHTML = '';
-
-        if (results.length === 0) {
-          searchResults.innerHTML = `<div class="no-results">No results for "${query}"</div>`;
-          searchResults.classList.add('active');
-          return;
-        }
-
-        results.forEach(result => {
-          const item = document.createElement('div');
-          item.className = 'search-result-item';
-          const title = result.title.replace(new RegExp(escapeRegExp(query), 'gi'), '<span class="highlight">$&</span>');
-          const snippets = createSnippets(result.content, query);
-          let snippetsHtml = snippets.map(s => `<div class="search-result-snippet">${s}</div>`).join('');
-
-          item.innerHTML = `
-            <div class="search-result-title">${title}</div>
-            <div class="search-result-url">${result.url}</div>
-            <div class="search-result-snippets">${snippetsHtml}</div>
-          `;
-          item.addEventListener('click', () => {
-            window.location.href = result.url;
-          });
-          searchResults.appendChild(item);
-        });
-
-        searchResults.classList.add('active');
-      }
-
-      let timeout;
-      searchInput.addEventListener('input', () => {
-        clearTimeout(timeout);
-        timeout = setTimeout(performSearch, searchDelay);
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!searchResults.contains(e.target) && e.target !== searchInput) {
-          searchResults.classList.remove('active');
-        }
-      });
-    }
-
   </script>
 </body>
 </html>
