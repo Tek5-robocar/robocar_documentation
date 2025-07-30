@@ -875,71 +875,35 @@
     function initSearch() {
       const searchInput = document.getElementById('search-input');
       const searchResults = document.getElementById('search-results');
-      
-      // Simple search index (in a real site, this would be generated during build)
-      const searchIndex = [
-        {
-          title: "Getting Started",
-          url: "/getting-started",
-          excerpt: "Learn how to set up your project and get started with our documentation."
-        },
-        {
-          title: "Installation Guide",
-          url: "/installation",
-          excerpt: "Step-by-step instructions to install the software on various platforms."
-        },
-        {
-          title: "Configuration Options",
-          url: "/configuration",
-          excerpt: "Explore all available configuration options for your project."
-        },
-        {
-          title: "API Reference",
-          url: "/api-reference",
-          excerpt: "Comprehensive documentation for all available API endpoints."
-        },
-        {
-          title: "Troubleshooting",
-          url: "/troubleshooting",
-          excerpt: "Solutions for common problems and errors you might encounter."
-        },
-        {
-          title: "Best Practices",
-          url: "/best-practices",
-          excerpt: "Recommended approaches and patterns for using our software."
-        }
-      ];
-      
-      // Highlight matching text
-      function highlightText(text, searchTerm) {
-        if (!searchTerm) return text;
-        const regex = new RegExp(`(${searchTerm})`, 'gi');
-        return text.replace(regex, '<span class="highlight">$1</span>');
-      }
-      
-      // Perform search
+
+      let searchIndex = [];
+
+      fetch('/search.json')
+        .then(response => response.json())
+        .then(data => {
+          searchIndex = data;
+        });
+
       function performSearch(query) {
         if (!query || query.length < 2) {
           searchResults.classList.remove('active');
           return;
         }
-        
+
         const searchTerm = query.toLowerCase();
-        const results = searchIndex.filter(item => {
-          return item.title.toLowerCase().includes(searchTerm) || 
-                 item.excerpt.toLowerCase().includes(searchTerm);
-        });
-        
-        // Clear previous results
+        const results = searchIndex.filter(item =>
+          item.title.toLowerCase().includes(searchTerm) ||
+          item.excerpt.toLowerCase().includes(searchTerm)
+        );
+
         searchResults.innerHTML = '';
-        
+
         if (results.length === 0) {
           searchResults.innerHTML = '<div class="no-results">No results found for "' + query + '"</div>';
           searchResults.classList.add('active');
           return;
         }
-        
-        // Add results to DOM
+
         results.forEach(result => {
           const resultElement = document.createElement('div');
           resultElement.className = 'search-result-item';
@@ -949,36 +913,26 @@
             <div class="search-result-excerpt">${highlightText(result.excerpt, searchTerm)}</div>
           `;
           resultElement.addEventListener('click', () => {
-            // In a real implementation, this would navigate to the page
-            alert('Navigating to: ' + result.url);
-            searchResults.classList.remove('active');
+            window.location.href = result.url;
           });
           searchResults.appendChild(resultElement);
         });
-        
+
         searchResults.classList.add('active');
       }
-      
-      // Event listeners for search
+
       searchInput.addEventListener('input', (e) => {
         performSearch(e.target.value);
       });
-      
+
       searchInput.addEventListener('focus', () => {
         if (searchInput.value.length >= 2) {
           searchResults.classList.add('active');
         }
       });
-      
+
       document.addEventListener('click', (e) => {
         if (!searchResults.contains(e.target) && e.target !== searchInput) {
-          searchResults.classList.remove('active');
-        }
-      });
-      
-      // Close search when pressing escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
           searchResults.classList.remove('active');
         }
       });
