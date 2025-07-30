@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ page.title }} | {{ site.title }}</title>
+  <title>Documentation Template</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -111,7 +111,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: var(--transition);
+      transition: var(--transition;
     }
     
     .sidebar h2 {
@@ -658,16 +658,24 @@
       color: var(--text-light);
     }
     
-    .search-result-excerpt {
+    .search-result-snippet {
       font-size: 0.9rem;
       margin-top: 5px;
       color: var(--text-color);
+      line-height: 1.4;
     }
     
-    .highlight {
+    .search-result-snippet .highlight {
       background-color: #fff9c4;
       padding: 0 2px;
       border-radius: 2px;
+      font-weight: 600;
+    }
+    
+    .snippet-divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 8px 0;
     }
     
     .no-results {
@@ -685,7 +693,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
           <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 2v14h14V5H5zm4 2h2v6H9V7zm6 0h-2v6h2V7z"/>
         </svg>
-        <span>{{ site.title }}</span>
+        <span>DevDocs</span>
       </div>
       
       <div class="search-box">
@@ -694,38 +702,212 @@
         <div id="search-results"></div>
       </div>
       
-      <h2>Navigation</h2>
+      <h2>Getting Started</h2>
       <ul>
-        {% for item in site.data.navigation %}
-          <li>
-            <a href="{{ item.url | relative_url }}" 
-               {% if page.url == item.url %}class="active"{% endif %}
-               data-toc-id="{{ item.toc_id }}">
-              {{ item.title }}
-            </a>
-          </li>
-        {% endfor %}
+        <li>
+          <a href="#" class="active" data-toc-id="introduction">
+            <i class="fas fa-rocket"></i> Introduction
+          </a>
+        </li>
+        <li>
+          <a href="#" data-toc-id="installation">
+            <i class="fas fa-download"></i> Installation
+          </a>
+        </li>
+        <li>
+          <a href="#" data-toc-id="configuration">
+            <i class="fas fa-cog"></i> Configuration
+          </a>
+        </li>
+        <li>
+          <a href="#" data-toc-id="authentication">
+            <i class="fas fa-key"></i> Authentication
+          </a>
+        </li>
+      </ul>
+      
+      <h2>Core Concepts</h2>
+      <ul>
+        <li>
+          <a href="#" data-toc-id="architecture">
+            <i class="fas fa-project-diagram"></i> Architecture
+          </a>
+        </li>
+        <li>
+          <a href="#" data-toc-id="routing">
+            <i class="fas fa-route"></i> Routing
+          </a>
+        </li>
+        <li>
+          <a href="#" data-toc-id="state-management">
+            <i class="fas fa-database"></i> State Management
+          </a>
+        </li>
+        <li>
+          <a href="#" data-toc-id="testing">
+            <i class="fas fa-vial"></i> Testing
+          </a>
+        </li>
+      </ul>
+      
+      <h2>API Reference</h2>
+      <ul>
+        <li>
+          <a href="#" data-toc-id="rest-api">
+            <i class="fas fa-server"></i> REST API
+          </a>
+        </li>
+        <li>
+          <a href="#" data-toc-id="graphql">
+            <i class="fas fa-project-diagram"></i> GraphQL
+          </a>
+        </li>
+        <li>
+          <a href="#" data-toc-id="webhooks">
+            <i class="fas fa-bell"></i> Webhooks
+          </a>
+        </li>
       </ul>
     </aside>
 
     <!-- Center: Main Content - Scrollable -->
     <main id="main-content" class="main-content">
       <div class="page-header">
-        <h1 class="page-title">{{ page.title }}</h1>
-        <p class="page-description">{{ page.description }}</p>
+        <h1 class="page-title">Getting Started with DevDocs</h1>
+        <p class="page-description">A comprehensive guide to setting up and using our documentation platform for your development projects.</p>
       </div>
       
       <div class="breadcrumbs">
-        <a href="/">Home</a>
+        <a href="#">Home</a>
         <span>/</span>
-        <span>{{ page.title }}</span>
+        <a href="#">Getting Started</a>
+        <span>/</span>
+        <span>Introduction</span>
       </div>
       
       <div class="alert alert-info">
-        <strong>Pro Tip:</strong> Use the search feature to quickly find documentation on specific topics. You can also use the table of contents on the right to navigate this page.
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Pro Tip:</strong> Use the search feature to quickly find documentation on specific topics. You can also use the table of contents on the right to navigate this page.
+        </div>
       </div>
       
-      {{ content }}
+      <h2 id="introduction">Introduction <span class="badge badge-new">New</span></h2>
+      <p>Welcome to DevDocs, the comprehensive documentation platform designed for developers. This guide will help you understand the core concepts and get started with our platform.</p>
+      
+      <div class="card">
+        <h3 class="card-title"><i class="fas fa-lightbulb"></i> Key Features</h3>
+        <ul>
+          <li>Modern, responsive design that works on any device</li>
+          <li>Powerful search functionality with contextual results</li>
+          <li>Interactive code examples</li>
+          <li>Versioned documentation</li>
+          <li>Dark/light mode toggle</li>
+        </ul>
+      </div>
+      
+      <h3>Why DevDocs?</h3>
+      <p>DevDocs was created to solve common pain points developers face with documentation:</p>
+      
+      <div class="card">
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i>
+          <div>
+            <strong>Improved Search:</strong> Our enhanced search shows contextual snippets with highlighted terms for better discoverability.
+          </div>
+        </div>
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle"></i>
+          <div>
+            <strong>Multiple Results:</strong> Unlike traditional search, we show all occurrences on the same page, not just the first match.
+          </div>
+        </div>
+      </div>
+      
+      <h3 id="installation">Installation Guide</h3>
+      <p>To install DevDocs, follow these simple steps:</p>
+      
+      <pre><code>npm install devdocs --save
+# or
+yarn add devdocs</code></pre>
+      
+      <p>After installation, you can configure your documentation settings in the config file:</p>
+      
+      <pre><code>// devdocs.config.js
+module.exports = {
+  title: 'My Project Docs',
+  theme: 'default',
+  search: {
+    enabled: true,
+    maxResults: 10
+  }
+};</code></pre>
+      
+      <h3 id="configuration">Configuration Options</h3>
+      <p>DevDocs offers extensive configuration options:</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>theme</td>
+            <td>string</td>
+            <td>'default'</td>
+            <td>Choose from available themes</td>
+          </tr>
+          <tr>
+            <td>search.enabled</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>Enable/disable search functionality</td>
+          </tr>
+          <tr>
+            <td>search.maxResults</td>
+            <td>number</td>
+            <td>10</td>
+            <td>Maximum search results to display</td>
+          </tr>
+          <tr>
+            <td>sidebar.collapsible</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>Allow collapsing sidebar sections</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h3 id="authentication">Authentication</h3>
+      <p>For API access, you'll need to authenticate using your API key:</p>
+      
+      <pre><code>curl -X GET \
+  https://api.devdocs.com/data \
+  -H 'Authorization: Bearer YOUR_API_KEY'</code></pre>
+      
+      <p>Make sure to keep your API key secure and never expose it in client-side code.</p>
+      
+      <h3 id="routing">Routing in DevDocs</h3>
+      <p>Our routing system allows you to create nested documentation structures:</p>
+      
+      <pre><code>// routes.js
+module.exports = [
+  {
+    path: '/getting-started',
+    component: GettingStarted,
+    children: [
+      { path: 'installation', component: Installation },
+      { path: 'configuration', component: Configuration }
+    ]
+  }
+];</code></pre>
+      
+      <p>This hierarchical approach helps organize complex documentation sets.</p>
     </main>
 
     <!-- Right Sidebar: Table of Contents - Fixed -->
@@ -735,7 +917,23 @@
         <div class="toc-progress-inner"></div>
       </div>
       <div id="toc">
-        <ul class="toc-list"></ul>
+        <ul class="toc-list">
+          <li class="toc-list-item toc-level-2">
+            <a href="#introduction" class="toc-link">Introduction</a>
+          </li>
+          <li class="toc-list-item toc-level-2">
+            <a href="#installation" class="toc-link">Installation Guide</a>
+          </li>
+          <li class="toc-list-item toc-level-2">
+            <a href="#configuration" class="toc-link">Configuration Options</a>
+          </li>
+          <li class="toc-list-item toc-level-2">
+            <a href="#authentication" class="toc-link">Authentication</a>
+          </li>
+          <li class="toc-list-item toc-level-2">
+            <a href="#routing" class="toc-link">Routing in DevDocs</a>
+          </li>
+        </ul>
       </div>
     </nav>
   </div>
@@ -765,7 +963,6 @@
 
   <!-- Custom JavaScript -->
   <script>
-    // Search functionality implementation
     document.addEventListener('DOMContentLoaded', function() {
       // Generate TOC
       const tocList = document.querySelector('#toc .toc-list');
@@ -871,72 +1068,147 @@
       document.body.classList.add('dark-mode');
     }
     
-    // Search functionality
+    // Enhanced search functionality
     function initSearch() {
       const searchInput = document.getElementById('search-input');
       const searchResults = document.getElementById('search-results');
-      let searchIndex = [];
-
-      console.log("Initializing search...");
-
-      // Fetch search index from Jekyll-generated JSON
-      fetch('{{ site.baseurl }}/search.json')
-        .then(response => {
-          if (!response.ok) throw new Error('Failed to load /search.json');
-          return response.json();
-        })
-        .then(data => {
-          searchIndex = data;
-          console.log(`Loaded ${searchIndex.length} items into search index.`);
-        })
-        .catch(error => {
-          console.error("Error loading search index:", error);
-        });
-
+      
+      // Mock search index - in a real implementation, this would come from your Jekyll JSON
+      const searchIndex = [
+        {
+          title: "Getting Started",
+          url: "#",
+          excerpt: "Learn how to set up your project and get started with our documentation.",
+          content: "Welcome to DevDocs, the comprehensive documentation platform designed for developers. This guide will help you understand the core concepts and get started with our platform. DevDocs was created to solve common pain points developers face with documentation. Our enhanced search shows contextual snippets with highlighted terms for better discoverability. Unlike traditional search, we show all occurrences on the same page, not just the first match."
+        },
+        {
+          title: "Installation Guide",
+          url: "#installation",
+          excerpt: "Step-by-step instructions to install the software on various platforms.",
+          content: "To install DevDocs, follow these simple steps: npm install devdocs --save or yarn add devdocs. After installation, you can configure your documentation settings in the config file. Make sure to run the setup command after installation to initialize your project. The installation process supports Windows, macOS, and Linux operating systems."
+        },
+        {
+          title: "Configuration Options",
+          url: "#configuration",
+          excerpt: "Explore all available configuration options for your project.",
+          content: "DevDocs offers extensive configuration options. You can customize the theme, enable/disable features, and configure the sidebar behavior. The configuration file is written in JavaScript and supports all modern JS features. For production deployments, make sure to optimize your configuration settings for performance. The default configuration is designed to work out of the box for most projects."
+        },
+        {
+          title: "Authentication",
+          url: "#authentication",
+          excerpt: "Learn how to authenticate with our API using secure tokens.",
+          content: "For API access, you'll need to authenticate using your API key. Make sure to keep your API key secure and never expose it in client-side code. Our API supports OAuth2 authentication for advanced security. You can generate API keys from your account dashboard. Each key has configurable permissions and expiration dates."
+        },
+        {
+          title: "Routing in DevDocs",
+          url: "#routing",
+          excerpt: "Understand how to structure your documentation with nested routes.",
+          content: "Our routing system allows you to create nested documentation structures. This hierarchical approach helps organize complex documentation sets. Routes can be defined in a central configuration file. Each route can have child routes for creating multi-level documentation. The routing system supports dynamic parameters for creating flexible documentation layouts."
+        }
+      ];
+      
+      // Function to escape regex special characters
+      function escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+      
+      // Function to create context snippets
+      function createSnippets(content, query, maxSnippets = 3, snippetLength = 100) {
+        if (!content || !query) return [];
+        
+        const escapedQuery = escapeRegExp(query);
+        const regex = new RegExp(escapedQuery, 'gi');
+        const snippets = [];
+        let match;
+        
+        // Find all matches
+        while ((match = regex.exec(content)) !== null && snippets.length < maxSnippets) {
+          const start = Math.max(0, match.index - Math.floor(snippetLength / 2));
+          const end = Math.min(content.length, match.index + match[0].length + Math.floor(snippetLength / 2));
+          
+          let snippet = content.substring(start, end);
+          
+          // Highlight the query term
+          snippet = snippet.replace(regex, '<span class="highlight">$&</span>');
+          
+          // Add ellipsis if needed
+          if (start > 0) snippet = '...' + snippet;
+          if (end < content.length) snippet = snippet + '...';
+          
+          snippets.push(snippet);
+        }
+        
+        return snippets;
+      }
+      
       // Live search on input
       searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.trim().toLowerCase();
-        console.log("Search query:", query);
-
+        const query = e.target.value.trim();
+        
         if (query.length < 2) {
           searchResults.innerHTML = '';
           searchResults.classList.remove('active');
           return;
         }
-
-        // Filter results
-        const results = searchIndex.filter(item =>
-          (item.title && item.title.toLowerCase().includes(query)) ||
-          (item.excerpt && item.excerpt.toLowerCase().includes(query)) ||
-          (item.content && item.content.toLowerCase().includes(query))
-        );
-
-        console.log(`Found ${results.length} results.`);
-
+        
+        const results = searchIndex.filter(item => {
+          return (item.title && item.title.toLowerCase().includes(query.toLowerCase())) ||
+                 (item.excerpt && item.excerpt.toLowerCase().includes(query.toLowerCase())) ||
+                 (item.content && item.content.toLowerCase().includes(query.toLowerCase()));
+        });
+        
         // Clear previous
         searchResults.innerHTML = '';
-
+        
         if (results.length === 0) {
           searchResults.innerHTML = `<div class="no-results">No results found for "${query}"</div>`;
-        } else {
-          results.forEach(result => {
-            const item = document.createElement('div');
-            item.className = 'search-result-item';
-            item.innerHTML = `
-              <div class="search-result-title">${result.title}</div>
-              <div class="search-result-url">${result.url}</div>
-              <div class="search-result-excerpt">${result.excerpt}</div>
-            `;
-            item.addEventListener('click', () => {
-              window.location.href = result.url;
-            });
-            searchResults.appendChild(item);
-          });
+          searchResults.classList.add('active');
+          return;
         }
-
+        
+        // Add results to DOM
+        results.forEach(result => {
+          const item = document.createElement('div');
+          item.className = 'search-result-item';
+          
+          // Create title with highlighting
+          const title = result.title.replace(
+            new RegExp(escapeRegExp(query), 'gi'), 
+            '<span class="highlight">$&</span>'
+          );
+          
+          // Create snippets from content
+          const snippets = createSnippets(result.content, query);
+          
+          // Build snippets HTML
+          let snippetsHtml = '';
+          snippets.forEach((snippet, index) => {
+            snippetsHtml += `
+              <div class="search-result-snippet">${snippet}</div>
+              ${index < snippets.length - 1 ? '<div class="snippet-divider"></div>' : ''}
+            `;
+          });
+          
+          item.innerHTML = `
+            <div class="search-result-title">${title}</div>
+            <div class="search-result-url">${result.url}</div>
+            <div class="search-result-snippets">
+              ${snippetsHtml}
+            </div>
+          `;
+          
+          item.addEventListener('click', () => {
+            // In a real implementation, this would navigate to the page
+            window.location.href = result.url;
+            searchResults.classList.remove('active');
+          });
+          
+          searchResults.appendChild(item);
+        });
+        
         searchResults.classList.add('active');
       });
-
+      
       // Hide search results on outside click
       document.addEventListener('click', (e) => {
         if (!searchResults.contains(e.target) && e.target !== searchInput) {
@@ -944,7 +1216,6 @@
         }
       });
     }
-
   </script>
 </body>
 </html>
