@@ -154,9 +154,14 @@
     }
     
     .sidebar ul {
-      list-style: none;
+      list-style: none !important; /* Ensure no bullets */
+      padding-left: 0 !important; /* Remove default padding */
     }
-    
+
+    .sidebar li::before {
+      display: none !important; /* Hide any pseudo-elements */
+    }
+
     .sidebar li {
       margin: var(--space-xs) 0;
     }
@@ -231,7 +236,11 @@
       align-items: center;
       justify-content: space-between;
     }
-    
+
+    #toc .toc-list-item::before {
+      display: none !important; /* Hide any pseudo-elements */
+    }
+
     /* Custom TOC Styles */
     #toc {
       position: relative;
@@ -240,8 +249,8 @@
     }
     
     #toc .toc-list {
-      list-style: none;
-      padding-left: 0;
+      list-style: none !important; /* Ensure no bullets */
+      padding-left: 0 !important; /* Remove default padding */
     }
 
     #toc .toc-level-1 {
@@ -273,7 +282,7 @@
       text-decoration: none;
       color: var(--text-color);
       display: block;
-      padding: 0.6rem 1rem;
+      padding: 0.4rem 1rem;
       border-radius: var(--radius-sm);
       transition: var(--transition);
       font-size: 0.9rem;
