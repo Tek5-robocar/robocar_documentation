@@ -876,27 +876,38 @@
       const searchInput = document.getElementById('search-input');
       const searchResults = document.getElementById('search-results');
       let searchIndex = [];
+      let lastSearchTime = 0;
+      const searchDelay = 300;
 
-      console.log("Initializing search...");
-
-      // Fetch search index from Jekyll-generated JSON
       fetch('{{ site.baseurl }}/search.json')
-        .then(response => {
-          if (!response.ok) throw new Error('Failed to load /search.json');
-          return response.json();
-        })
-        .then(data => {
-          searchIndex = data;
-          console.log(`Loaded ${searchIndex.length} items into search index.`);
-        })
-        .catch(error => {
-          console.error("Error loading search index:", error);
-        });
+        .then(res => res.json())
+        .then(data => searchIndex = data);
 
-      // Live search on input
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.trim().toLowerCase();
-        console.log("Search query:", query);
+      function escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+
+      function createSnippets(text, query, max = 3, len = 100) {
+        const regex = new RegExp(escapeRegExp(query), 'gi');
+        const snippets = [];
+        let match;
+        while ((match = regex.exec(text)) !== null && snippets.length < max) {
+          let start = Math.max(0, match.index - len/2);
+          let end = Math.min(text.length, match.index + query.length + len/2);
+          let snippet = text.substring(start, end);
+          snippet = snippet.replace(regex, '<span class="highlight">$&</span>');
+          if (start > 0) snippet = '...' + snippet;
+          if (end < text.length) snippet = snippet + '...';
+          snippets.push(snippet);
+        }
+        return snippets;
+      }
+
+      function performSearch() {
+        const query = searchInput.value.trim();
+        const currentTime = Date.now();
+        if (currentTime - lastSearchTime < searchDelay) return;
+        lastSearchTime = currentTime;
 
         if (query.length < 2) {
           searchResults.innerHTML = '';
@@ -904,40 +915,47 @@
           return;
         }
 
-        // Filter results
         const results = searchIndex.filter(item =>
-          (item.title && item.title.toLowerCase().includes(query)) ||
-          (item.excerpt && item.excerpt.toLowerCase().includes(query)) ||
-          (item.content && item.content.toLowerCase().includes(query))
+          (item.title && item.title.toLowerCase().includes(query.toLowerCase())) ||
+          (item.excerpt && item.excerpt.toLowerCase().includes(query.toLowerCase())) ||
+          (item.content && item.content.toLowerCase().includes(query.toLowerCase()))
         );
 
-        console.log(`Found ${results.length} results.`);
-
-        // Clear previous
         searchResults.innerHTML = '';
 
         if (results.length === 0) {
-          searchResults.innerHTML = `<div class="no-results">No results found for "${query}"</div>`;
-        } else {
-          results.forEach(result => {
-            const item = document.createElement('div');
-            item.className = 'search-result-item';
-            item.innerHTML = `
-              <div class="search-result-title">${result.title}</div>
-              <div class="search-result-url">${result.url}</div>
-              <div class="search-result-excerpt">${result.excerpt}</div>
-            `;
-            item.addEventListener('click', () => {
-              window.location.href = result.url;
-            });
-            searchResults.appendChild(item);
-          });
+          searchResults.innerHTML = `<div class="no-results">No results for "${query}"</div>`;
+          searchResults.classList.add('active');
+          return;
         }
 
+        results.forEach(result => {
+          const item = document.createElement('div');
+          item.className = 'search-result-item';
+          const title = result.title.replace(new RegExp(escapeRegExp(query), 'gi'), '<span class="highlight">$&</span>');
+          const snippets = createSnippets(result.content, query);
+          let snippetsHtml = snippets.map(s => `<div class="search-result-snippet">${s}</div>`).join('');
+
+          item.innerHTML = `
+            <div class="search-result-title">${title}</div>
+            <div class="search-result-url">${result.url}</div>
+            <div class="search-result-snippets">${snippetsHtml}</div>
+          `;
+          item.addEventListener('click', () => {
+            window.location.href = result.url;
+          });
+          searchResults.appendChild(item);
+        });
+
         searchResults.classList.add('active');
+      }
+
+      let timeout;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(performSearch, searchDelay);
       });
 
-      // Hide search results on outside click
       document.addEventListener('click', (e) => {
         if (!searchResults.contains(e.target) && e.target !== searchInput) {
           searchResults.classList.remove('active');
