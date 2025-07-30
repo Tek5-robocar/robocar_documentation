@@ -4,6 +4,8 @@ incremental: false
 theme: minima
 markdown: kramdown
 highlighter: rouge
+include:
+  - search.json
 gist:
   noscript: false
 kramdown:
