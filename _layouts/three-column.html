@@ -875,68 +875,75 @@
     function initSearch() {
       const searchInput = document.getElementById('search-input');
       const searchResults = document.getElementById('search-results');
-
       let searchIndex = [];
 
+      console.log("Initializing search...");
+
+      // Fetch search index from Jekyll-generated JSON
       fetch('/search.json')
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) throw new Error('Failed to load /search.json');
+          return response.json();
+        })
         .then(data => {
           searchIndex = data;
+          console.log(`Loaded ${searchIndex.length} items into search index.`);
+        })
+        .catch(error => {
+          console.error("Error loading search index:", error);
         });
 
-      function performSearch(query) {
-        if (!query || query.length < 2) {
+      // Live search on input
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        console.log("Search query:", query);
+
+        if (query.length < 2) {
+          searchResults.innerHTML = '';
           searchResults.classList.remove('active');
           return;
         }
 
-        const searchTerm = query.toLowerCase();
+        // Filter results
         const results = searchIndex.filter(item =>
-          item.title.toLowerCase().includes(searchTerm) ||
-          item.excerpt.toLowerCase().includes(searchTerm)
+          (item.title && item.title.toLowerCase().includes(query)) ||
+          (item.excerpt && item.excerpt.toLowerCase().includes(query))
         );
 
+        console.log(`Found ${results.length} results.`);
+
+        // Clear previous
         searchResults.innerHTML = '';
 
         if (results.length === 0) {
-          searchResults.innerHTML = '<div class="no-results">No results found for "' + query + '"</div>';
-          searchResults.classList.add('active');
-          return;
-        }
-
-        results.forEach(result => {
-          const resultElement = document.createElement('div');
-          resultElement.className = 'search-result-item';
-          resultElement.innerHTML = `
-            <div class="search-result-title">${highlightText(result.title, searchTerm)}</div>
-            <div class="search-result-url">${result.url}</div>
-            <div class="search-result-excerpt">${highlightText(result.excerpt, searchTerm)}</div>
-          `;
-          resultElement.addEventListener('click', () => {
-            window.location.href = result.url;
+          searchResults.innerHTML = `<div class="no-results">No results found for "${query}"</div>`;
+        } else {
+          results.forEach(result => {
+            const item = document.createElement('div');
+            item.className = 'search-result-item';
+            item.innerHTML = `
+              <div class="search-result-title">${result.title}</div>
+              <div class="search-result-url">${result.url}</div>
+              <div class="search-result-excerpt">${result.excerpt}</div>
+            `;
+            item.addEventListener('click', () => {
+              window.location.href = result.url;
+            });
+            searchResults.appendChild(item);
           });
-          searchResults.appendChild(resultElement);
-        });
+        }
 
         searchResults.classList.add('active');
-      }
-
-      searchInput.addEventListener('input', (e) => {
-        performSearch(e.target.value);
       });
 
-      searchInput.addEventListener('focus', () => {
-        if (searchInput.value.length >= 2) {
-          searchResults.classList.add('active');
-        }
-      });
-
+      // Hide search results on outside click
       document.addEventListener('click', (e) => {
         if (!searchResults.contains(e.target) && e.target !== searchInput) {
           searchResults.classList.remove('active');
         }
       });
     }
+
   </script>
 </body>
 </html>
