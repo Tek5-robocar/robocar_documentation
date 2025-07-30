@@ -887,20 +887,33 @@
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       }
 
-      function createSnippets(text, query, max = 3, len = 100) {
-        const regex = new RegExp(escapeRegExp(query), 'gi');
-        const snippets = [];
+      function createSnippets(text, query, maxSnippets = 3, snippetLength = 100) {
+        if (!text || !query) return [];
+
+        const escapedQuery = escapeRegExp(query);
+        const regex = new RegExp(escapedQuery, 'gi');
+        const snippets = new Set();  // Use Set to auto-deduplicate
         let match;
-        while ((match = regex.exec(text)) !== null && snippets.length < max) {
-          let start = Math.max(0, match.index - len/2);
-          let end = Math.min(text.length, match.index + query.length + len/2);
-          let snippet = text.substring(start, end);
+        let lastIndex = 0;
+
+        while ((match = regex.exec(text)) !== null && snippets.size < maxSnippets) {
+          const start = Math.max(lastIndex, match.index - Math.floor(snippetLength / 2));
+          const end = Math.min(text.length, match.index + match[0].length + Math.floor(snippetLength / 2));
+          let snippet = text.substring(start, end).trim();
+
+          // Highlight match
           snippet = snippet.replace(regex, '<span class="highlight">$&</span>');
+
+          // Add ellipsis if not full sentence
           if (start > 0) snippet = '...' + snippet;
           if (end < text.length) snippet = snippet + '...';
-          snippets.push(snippet);
+
+          // Only add if it's not already in the set
+          snippets.add(snippet);
+          lastIndex = end;
         }
-        return snippets;
+
+        return Array.from(snippets);
       }
 
       function performSearch() {
