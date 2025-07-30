@@ -880,7 +880,7 @@
       console.log("Initializing search...");
 
       // Fetch search index from Jekyll-generated JSON
-      fetch('/search.json')
+      fetch('{{ site.baseurl }}/search.json')
         .then(response => {
           if (!response.ok) throw new Error('Failed to load /search.json');
           return response.json();
