@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>{{ page.title }} | {{ site.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --sidebar-bg: #f8f9fa;
@@ -529,6 +530,14 @@
       box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
     }
     
+    .search-box i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+    }
+    
     /* Breadcrumbs */
     .breadcrumbs {
       display: flex;
@@ -605,6 +614,67 @@
       background: var(--primary-color);
       transition: width 0.3s ease;
     }
+    
+    /* Search Results */
+    #search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--card-bg);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      max-height: 400px;
+      overflow-y: auto;
+      z-index: 100;
+      margin-top: 5px;
+      display: none;
+      border: 1px solid var(--border-color);
+    }
+    
+    #search-results.active {
+      display: block;
+    }
+    
+    .search-result-item {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .search-result-item:hover {
+      background-color: var(--toc-active-bg);
+    }
+    
+    .search-result-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 4px;
+    }
+    
+    .search-result-url {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+    
+    .search-result-excerpt {
+      font-size: 0.9rem;
+      margin-top: 5px;
+      color: var(--text-color);
+    }
+    
+    .highlight {
+      background-color: #fff9c4;
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+    
+    .no-results {
+      padding: 15px;
+      text-align: center;
+      color: var(--text-light);
+    }
   </style>
 </head>
 <body>
@@ -619,7 +689,9 @@
       </div>
       
       <div class="search-box">
-        <input type="text" placeholder="Search documentation...">
+        <i class="fas fa-search"></i>
+        <input type="text" id="search-input" placeholder="Search documentation...">
+        <div id="search-results"></div>
       </div>
       
       <h2>Navigation</h2>
@@ -693,6 +765,7 @@
 
   <!-- Custom JavaScript -->
   <script>
+    // Search functionality implementation
     document.addEventListener('DOMContentLoaded', function() {
       // Generate TOC
       const tocList = document.querySelector('#toc .toc-list');
@@ -764,6 +837,9 @@
       
       // Set initial scroll position
       mainContent.scrollTop = 0;
+      
+      // Initialize search functionality
+      initSearch();
     });
     
     // Mobile menu functions
@@ -793,6 +869,119 @@
     // Load saved theme
     if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark-mode');
+    }
+    
+    // Search functionality
+    function initSearch() {
+      const searchInput = document.getElementById('search-input');
+      const searchResults = document.getElementById('search-results');
+      
+      // Simple search index (in a real site, this would be generated during build)
+      const searchIndex = [
+        {
+          title: "Getting Started",
+          url: "/getting-started",
+          excerpt: "Learn how to set up your project and get started with our documentation."
+        },
+        {
+          title: "Installation Guide",
+          url: "/installation",
+          excerpt: "Step-by-step instructions to install the software on various platforms."
+        },
+        {
+          title: "Configuration Options",
+          url: "/configuration",
+          excerpt: "Explore all available configuration options for your project."
+        },
+        {
+          title: "API Reference",
+          url: "/api-reference",
+          excerpt: "Comprehensive documentation for all available API endpoints."
+        },
+        {
+          title: "Troubleshooting",
+          url: "/troubleshooting",
+          excerpt: "Solutions for common problems and errors you might encounter."
+        },
+        {
+          title: "Best Practices",
+          url: "/best-practices",
+          excerpt: "Recommended approaches and patterns for using our software."
+        }
+      ];
+      
+      // Highlight matching text
+      function highlightText(text, searchTerm) {
+        if (!searchTerm) return text;
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+        return text.replace(regex, '<span class="highlight">$1</span>');
+      }
+      
+      // Perform search
+      function performSearch(query) {
+        if (!query || query.length < 2) {
+          searchResults.classList.remove('active');
+          return;
+        }
+        
+        const searchTerm = query.toLowerCase();
+        const results = searchIndex.filter(item => {
+          return item.title.toLowerCase().includes(searchTerm) || 
+                 item.excerpt.toLowerCase().includes(searchTerm);
+        });
+        
+        // Clear previous results
+        searchResults.innerHTML = '';
+        
+        if (results.length === 0) {
+          searchResults.innerHTML = '<div class="no-results">No results found for "' + query + '"</div>';
+          searchResults.classList.add('active');
+          return;
+        }
+        
+        // Add results to DOM
+        results.forEach(result => {
+          const resultElement = document.createElement('div');
+          resultElement.className = 'search-result-item';
+          resultElement.innerHTML = `
+            <div class="search-result-title">${highlightText(result.title, searchTerm)}</div>
+            <div class="search-result-url">${result.url}</div>
+            <div class="search-result-excerpt">${highlightText(result.excerpt, searchTerm)}</div>
+          `;
+          resultElement.addEventListener('click', () => {
+            // In a real implementation, this would navigate to the page
+            alert('Navigating to: ' + result.url);
+            searchResults.classList.remove('active');
+          });
+          searchResults.appendChild(resultElement);
+        });
+        
+        searchResults.classList.add('active');
+      }
+      
+      // Event listeners for search
+      searchInput.addEventListener('input', (e) => {
+        performSearch(e.target.value);
+      });
+      
+      searchInput.addEventListener('focus', () => {
+        if (searchInput.value.length >= 2) {
+          searchResults.classList.add('active');
+        }
+      });
+      
+      document.addEventListener('click', (e) => {
+        if (!searchResults.contains(e.target) && e.target !== searchInput) {
+          searchResults.classList.remove('active');
+        }
+      });
+      
+      // Close search when pressing escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          searchResults.classList.remove('active');
+        }
+      });
     }
   </script>
 </body>
