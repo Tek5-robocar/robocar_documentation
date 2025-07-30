@@ -4,13 +4,12 @@ permalink: /search.json
 ---
 
 [
-  {% for page in site.pages %}
-    {% if page.search_exclude != true and page.title %}
-      {
-        "title": {{ page.title | jsonify }},
-        "url": {{ page.url | relative_url | jsonify }},
-        "excerpt": {{ page.content | strip_html | truncate: 160 | jsonify }}
-      }{% unless forloop.last %},{% endunless %}
-    {% endif %}
+  {% assign items = site.pages | where_exp: "page", "page.search_exclude != true and page.title" %}
+  {% for page in items %}
+    {
+      "title": {{ page.title | jsonify }},
+      "url": {{ page.url | relative_url | jsonify }},
+      "excerpt": {{ page.content | strip_html | truncate: 160 | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]
