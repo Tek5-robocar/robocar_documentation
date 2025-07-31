@@ -49,8 +49,6 @@ In 2025, our Robocar team took part in the **UTAC autonomous vehicle tournament*
 👉 [Read the UTAC 2025 Recap](https://www.epitech.eu/2025/07/08/robocar-au-challenge-utac-2025/)
 
 📹 And watch the highlight video from the event on YouTube:  
-<!-- 👉 [Watch the UTAC 2025 Tournament Video](https://www.youtube.com/watch?v=BvDePUn8-f0) -->
-
 <iframe width="560" height="315"
   src="https://www.youtube.com/embed/BvDePUn8-f0"
   title="YouTube video player"

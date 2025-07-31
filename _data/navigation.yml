@@ -1,7 +1,10 @@
 - title: Project Overview
   url: /
   toc_id: what-is-the-racingsimulator
-- title: BOM
+- title: Build Robocar
+  url: /build-robocar/
+  toc_id: introduction
+- title: Order components
   url: /bom/
   toc_id: car-material
 - title: VESC

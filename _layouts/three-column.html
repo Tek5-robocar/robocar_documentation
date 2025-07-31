@@ -734,31 +734,39 @@
       position: relative;
     }
     
-    ul li:before {
+    /* ul li:before {
       content: '•';
       color: var(--primary-color);
       font-weight: bold;
       display: inline-block; 
       width: 1em;
       margin-left: -1em;
+    } */
+
+    ul {
+      list-style: disc;
+      padding-left: 1.5em; /* ensures proper indentation */
     }
-    
+
+    ul li {
+      color: inherit; /* text stays default color */
+    }
+
+    ul li::marker {
+      color: var(--primary-color); /* makes the bullet blue */
+    }
+
+
     ol {
-      counter-reset: item;
+      list-style: decimal;
+      padding-left: 1.5em;
     }
-    
-    ol li {
-      counter-increment: item;
+
+    ol li::marker {
+      color: var(--primary-color); /* or use a specific color like #3a86ff */
+      font-weight: bold; /* optional */
     }
-    
-    ol li:before {
-      content: counter(item) ".";
-      color: var(--primary-color);
-      font-weight: bold;
-      position: absolute;
-      left: -1.5em;
-    }
-    
+
     blockquote {
       background: var(--primary-light);
       border-left: 4px solid var(--primary-color);
@@ -851,15 +859,7 @@
         <h1 class="page-title">{{ page.title }}</h1>
         <p class="page-description">{{ page.description }}</p>
       </div>
-      
-      <div class="breadcrumbs">
-        <a href="/">Home</a>
-        <span>/</span>
-        <a href="#">Documentation</a>
-        <span>/</span>
-        <span>{{ page.title }}</span>
-      </div>
-      
+
       <div class="alert alert-info">
         <i class="fas fa-info-circle"></i>
         <div class="alert-content">

@@ -1,12 +1,9 @@
 ---
 layout: three-column
-title: BOM
+title: Bills Of Material
 permalink: /bom/
+description: Complete list of hardware components used for the Robocar project, including ordering links and notes for car, accessories, and tools.
 ---
-
-# Robocar: Bills of Material
-
-**An educational and research-ready platform for autonomous navigation**
 
 ## 1. Car Material {#car-material}
 
