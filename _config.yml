@@ -12,3 +12,7 @@ gist:
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
+plugins:
+  - jekyll-seo-tag
+whitelist:
+  - jekyll-seo-tag
