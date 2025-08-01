@@ -32,16 +32,16 @@ Ensure the following prerequisites are met:
 Follow these steps to open the project and install required packages:
 
 1. Open Unity Hub and **Add the project from disk**  
-   ![Add project in Unity Hub](./images/add_in_hub.png)
+   ![Add project in Unity Hub](./images/simulator/add_in_hub.png)
 2. Install the required Unity Editor version if prompted
 3. Open the project
 4. Load the scene:  
-   ![Open scene](./images/open_scene_racingsimulator.png)
+   ![Open scene](./images/simulator/open_scene_racingsimulator.png)
    - Go to the **Assets** folder in the **Project** tab
    - Open the **Scenes** folder
    - Double-click on `RacingSimulator.unity`
 5. Install required packages via the **Package Manager**  
-   ![Open Unity Package Manager](./images/package_manager_unity.png)
+   ![Open Unity Package Manager](./images/simulator/package_manager_unity.png)
 6. Ensure the following packages are installed:
    - `com.unity.ugui` (Unity UI)
    - `com.unity.ml-agents` (ML Agents)
