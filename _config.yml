@@ -4,7 +4,7 @@ incremental: false
 theme: minima
 markdown: kramdown
 highlighter: rouge
-baseurl: "/robocar_documentation"
+baseurl: "/documentation"
 include:
   - search.json
 gist:
