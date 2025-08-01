@@ -63,6 +63,8 @@ Follow these steps to set up your device correctly.
 > 📸 *Here’s what you’ll typically see before installing the driver:*
 > ![Unrecognized COM Ports](./images/gnss/peripherical_serial_port.png)
 
+[Unrecognized COM Ports](./images/gnss/peripherical_serial_port.png)
+
 5. **Manually Install the Driver**
    - Right-click on **Enhanced Com Port**
    - Select **Update driver**
