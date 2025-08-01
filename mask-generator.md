@@ -9,7 +9,7 @@ permalink: /mask-generator/
 > **Note**: This tutorial assumes you have some basic knowledge of Unity.  
 > It **does not** explain how to use Unity from scratch, and may be challenging for complete beginners.  
 
-### In this tutorial, you will learn how to:
+## In this tutorial, you will learn how to:
 
 - Use the simulation as-is
 - Customize the simulation
