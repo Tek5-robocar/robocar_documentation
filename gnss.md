@@ -102,6 +102,39 @@ Once everything is configured, click **ADD** to save the GNSS connection.
 
 You are now ready to move forward with firmware flashing or device integration.
 
+### C. Update the GNSS Firmware {#firmware-update}
+
+Once the device is connected via USB and Point One Desktop is configured, you can now update your GNSS module with the latest firmware.
+
+#### 1. Open the Firmware Update Tab
+
+- Click on the **gear icon** in the left sidebar of Point One Desktop.
+- The software should automatically detect the connected device and display the **Current Firmware** and the recommended **Update Firmware** versions.
+- Ensure the correct serial **Port** is selected (e.g., `COM4`).
+
+#### 2. Load Firmware File
+
+- You can download the last firmware version in the requirements.
+
+- Click **SELECT FILE** and navigate to the downloaded `.p1fw` firmware file.
+
+#### 3. Begin Firmware Update
+
+- Click **CHECK FIRMWARE** if needed to refresh version info.
+- Once the file is selected, the update will begin in two steps:
+  1. Quectel Firmware
+  2. GNSS Receiver Firmware
+
+- Do **not** disconnect the USB or power during this process.
+
+> 📸 *Here’s what the firmware update window looks like before starting:*
+> ![Firmware Update Screen](./images/gnss/P1_tools_frim_update.png)
+
+> ✅ *After a successful update, you should see a confirmation like this:*
+> ![Firmware Update Success](./images/gnss/P1_tools_update_sucessfull.png)
+
+Your GNSS module is now up-to-date and ready for RTK positioning with enhanced performance and stability.
+
 ## 4. Python Development {#python-dev}
 
 *This section will describe how to interface with the Point One Navigation Dev Kit using Python (e.g. serial communication, parsing NMEA or custom messages, etc.).*
