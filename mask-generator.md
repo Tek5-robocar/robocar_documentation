@@ -4,7 +4,7 @@ title: Mask Generator
 permalink: /mask-generator/
 ---
 
-# Tutorial
+## Tutorial
 
 > **Note**: This tutorial assumes you have some basic knowledge of Unity.  
 > It **does not** explain how to use Unity from scratch, and may be challenging for complete beginners.  
