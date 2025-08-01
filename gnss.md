@@ -7,16 +7,35 @@ description: Step-by-step guide for setting up and flashing the Point One Naviga
 
 ## 1. Introduction {#introduction}
 
-The Point One Navigation Standard Development Kit provides real-time kinematic (RTK) positioning with centimeter-level accuracy. This GPS solution is designed for integration into autonomous systems such as robotic cars and drones. Proper setup and flashing ensure the device is recognized and ready for software integration and high-accuracy location tracking.
+The Point One Navigation Standard Development Kit is a high-precision GNSS-based positioning system designed for real-time kinematic (RTK) applications. It provides centimeter-level location accuracy and is ideal for integration into autonomous systems such as robotic cars, drones, or research platforms.
+
+This development kit includes both **GNSS** (Global Navigation Satellite System) and an onboard **IMU** (Inertial Measurement Unit), allowing for reliable and stable positioning even in environments where satellite signals may temporarily degrade — such as tunnels or near large structures.
+
+The GNSS module delivers global position data using satellite constellations like GPS, GLONASS, and Galileo, while the IMU provides orientation, acceleration, and angular velocity data that enhance accuracy and robustness in dynamic or partially obstructed conditions.
+
+Proper setup, flashing, and calibration of the firmware are essential to ensure that your device is fully recognized and ready for software integration and sensor fusion in high-accuracy navigation tasks.
 
 ## 2. Requirements {#requirements}
 
 To follow this tutorial, you will need:
 
-- A Windows or macOS computer  
-- The Point One Navigation Standard Dev Kit  
-- A micro-USB cable (usually provided in the kit)  
-- Internet access to download required drivers and tools
+- A Windows computer
+- The Point One Navigation Standard Dev Kit
+- A micro-USB cable (usually provided in the kit)
+
+Additionally, please install the following software on your computer:
+
+1. **USB Serial Driver** – Enables your PC to recognize the connected GNSS module
+   📥 [Download USB Driver for Windows](https://s3.amazonaws.com/files.pointonenav.com/drivers/CP210x_Universal_Windows_Driver.zip)
+
+2. **Point One Desktop** – Used for updating firmware and configuring the module
+   📥 [Download Point One Desktop for Windows](https://s3.us-west-2.amazonaws.com/updates.pointonenav.com/eos/win32/x64/PointOne-1.6.10.Setup.exe)
+
+3. **Firmware File** – Latest firmware for the Standard Dev Kit
+   📥 [Download Firmware](https://s3.amazonaws.com/files.pointonenav.com/quectel/lg69t/quectel-lg69t-ap.0.15.3.p1fw)
+
+> 💡 For additional documentation and tools, check the official Point One resource portal:
+> [https://pointonenav.com/resources/](https://pointonenav.com/resources/)
 
 ## 3. Flashing Tutorial {#flashing}
 
@@ -24,20 +43,37 @@ Follow these steps to set up your device correctly.
 
 ### A. Install USB Serial Driver {#install-driver}
 
-To begin, install the USB serial driver so your computer can recognize the connected GNSS module.
+1. **Download the USB Driver**
+   📥 [Download USB Driver (Windows)](https://s3.amazonaws.com/files.pointonenav.com/drivers/CP210x_Universal_Windows_Driver.zip)
 
-- 👉 Download the driver from Point One Navigation’s documentation site:  
-  [https://support.pointonenav.com](https://support.pointonenav.com)  
-  *(Search for “USB Serial Driver” or visit the Standard Dev Kit documentation section.)*
+2. **Extract the ZIP Archive**
+   - Right-click the downloaded ZIP file and choose **Extract All**.
+   - Remember the folder location (you’ll need it in the next step).
 
-- After installation, connect the Point One Dev Kit to your PC using a USB cable.
+3. **Connect the GNSS Dev Kit**
+   Use a micro-USB cable to connect your Standard Dev Kit to the computer.
 
-- Confirm the device is recognized by checking your:
-  - **Device Manager** (Windows)  
-  - **System Information > USB** (macOS)
+4. **Open Device Manager**
+   - Press `Windows + X` → select **Device Manager**
+   - Under **Other devices (Autres périphériques)**, you’ll likely see:
+     - ❗ **Enhanced Com Port**
+     - ❗ **Standard Com Port**
+     with yellow warning icons — this means Windows doesn't recognize the device yet.
 
-**Screenshot Placeholder:**  
-![Image](path/to/screenshot_device_recognition.png)
+> 📸 *Here’s what you’ll typically see before installing the driver:*
+> ![Unrecognized COM Ports](./images/gnss/peripherical_serial_port.png)
+
+5. **Manually Install the Driver**
+   - Right-click on **Enhanced Com Port**
+   - Select **Update driver**
+   - Choose **Browse my computer for drivers**
+   - Navigate to the folder where you extracted the driver ZIP file
+   - Click **Next** to install
+   - Repeat the same for **Standard Com Port**
+
+6. **Verify Successful Installation**
+   After installation, the devices will appear under **Ports (COM & LPT)**, recognized as:
+   - `Silicon Labs CP210x USB to UART Bridge (COMX)`
 
 ### B. Launch Flashing Utility {#flashing-utility}
 
