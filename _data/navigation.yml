@@ -13,3 +13,9 @@
 - title: GNSS RTK GPS - Point One
   url: /gnss-rtk-gps/
   toc_id: introduction
+- title: Racing Simulator
+  url: /racing-simulator/
+  toc_id: Tutorial
+- title: Mask Generator
+  url: /mask-generator/
+  toc_id: Tutorial
