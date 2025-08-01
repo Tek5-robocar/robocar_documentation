@@ -127,11 +127,11 @@ Once the device is connected via USB and Point One Desktop is configured, you ca
 
 - Do **not** disconnect the USB or power during this process.
 
-> 📸 *Here’s what the firmware update window looks like before starting:*
-> ![Firmware Update Screen](./images/gnss/P1_tools_frim_update.png)
+Here’s what the firmware update window looks like before starting:
+![Firmware Update Screen](./images/gnss/P1_tools_frim_update.png)
 
-> ✅ *After a successful update, you should see a confirmation like this:*
-> ![Firmware Update Success](./images/gnss/P1_tools_update_sucessfull.png)
+After a successful update, you should see a confirmation like this:
+![Firmware Update Success](./images/gnss/P1_tools_update_sucessfull.png)
 
 Your GNSS module is now up-to-date and ready for RTK positioning with enhanced performance and stability.
 
