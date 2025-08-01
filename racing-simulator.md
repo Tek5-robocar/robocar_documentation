@@ -1,6 +1,7 @@
 ---
 layout: three-column
 title: Racing Simulator
+permalink: /racing-simulator/
 ---
 
 # Tutorial

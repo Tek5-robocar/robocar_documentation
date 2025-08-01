@@ -1,6 +1,7 @@
 ---
 layout: three-column
 title: Mask Generator
+permalink: /mask-generator/
 ---
 
 # Tutorial
