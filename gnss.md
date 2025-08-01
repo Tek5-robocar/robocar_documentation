@@ -60,7 +60,7 @@ Follow these steps to set up your device correctly.
      - ❗ **Standard Com Port**
      with yellow warning icons — this means Windows doesn't recognize the device yet.
 
-📸 *Here’s what you’ll typically see before installing the driver:*
+Here’s what you’ll typically see before installing the driver:
 ![Unrecognized COM Ports](./images/gnss/peripherical_serial_port.png)
 
 5. **Manually Install the Driver**
@@ -75,27 +75,32 @@ Follow these steps to set up your device correctly.
    After installation, the devices will appear under **Ports (COM & LPT)**, recognized as:
    - `Silicon Labs CP210x USB to UART Bridge (COMX)`
 
-### B. Launch Flashing Utility {#flashing-utility}
+### B. Launch Point One Desktop & Configure GNSS Connection {#flashing-utility}
 
-<!-- Placeholder for next step: launching the flashing software -->
-<!-- Add UI screenshots here once available -->
+Once the USB driver is installed and your device is recognized, you can begin configuring your GNSS module using the **Point One Desktop** software.
 
-**Screenshot Placeholder:**  
-![Image](path/to/screenshot_flashing_utility.png)
+#### 1. Launch Point One Desktop
+- Open the application: `PointOne` → the GUI should launch with a satellite map view and a left-hand settings menu.
 
-### C. Load Latest Firmware {#load-firmware}
+#### 2. Select the Serial Port
+- Under **Connection Settings**, select the appropriate serial port (e.g., `COM3`, `COM4`, etc.) that corresponds to your GNSS module.
+- Set the baud rate to `460800` (or leave at default if you're unsure).
+- Protocol: leave as `Auto`
+- Check the **"Connect on Start"** box if you want the software to auto-connect next time.
 
-<!-- Placeholder for firmware loading step -->
+#### 3. Configure GNSS Corrections
+- Scroll down to **GNSS Corrections**
+- Choose:
+  - ✅ **Polaris** as the correction source
+  - 🔒 **GNSS Caster**: `polaris.pointonenav.com`
+  - 🔑 **Polaris API Key**: enter the API key provided to you or the one from your point account.
 
-**Screenshot Placeholder:**  
-![Image](path/to/screenshot_firmware_load.png)
+Here’s what the configuration should look like once completed:
+![GNSS Corrections Setup](./images/gnss/P1_tool_kit.png)
 
-### D. Confirm Flashing and Reboot {#confirm-flash}
+Once everything is configured, click **ADD** to save the GNSS connection.
 
-<!-- Placeholder for successful flashing confirmation -->
-
-**Screenshot Placeholder:**  
-![Image](path/to/screenshot_flash_success.png)
+You are now ready to move forward with firmware flashing or device integration.
 
 ## 4. Python Development {#python-dev}
 
