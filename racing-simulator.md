@@ -2,9 +2,10 @@
 layout: three-column
 title: Racing Simulator
 permalink: /racing-simulator/
+description: A step-by-step guide for setting up the Racing Simulator Unity simulation so you can use it as-is or customize it to fit your needs.
 ---
 
-# Tutorial
+## Tutorial
 
 > **Note**: This tutorial assumes you have some basic knowledge of Unity.  
 > It **does not** explain how to use Unity from scratch, and may be challenging for complete beginners.  

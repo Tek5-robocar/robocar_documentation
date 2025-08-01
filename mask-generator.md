@@ -2,6 +2,7 @@
 layout: three-column
 title: Mask Generator
 permalink: /mask-generator/
+description: A step-by-step guide for setting up the Mask Generator Unity simulation so you can use it as-is or customize it to fit your needs.
 ---
 
 ## Tutorial
@@ -15,8 +16,6 @@ permalink: /mask-generator/
 - Customize the simulation
 - Generate datasets using a config file
 
----
-
 ## Before You Start
 
 Ensure the following prerequisites are met:
@@ -24,8 +23,6 @@ Ensure the following prerequisites are met:
 - Unity Hub is installed (download it [here](https://unity.com/download))
 - The **MaskGenerator** Unity project folder is accessible and fully unzipped
 - You have a stable internet connection
-
----
 
 ## Part 1: Open the Project
 
@@ -49,8 +46,6 @@ Follow these steps to open the project and install required packages:
 If everything is set up correctly, you can now run the simulation using the **Play** button.
 
 > **Tip**: If you cloned the project and textures are missing, you may need to use [Git LFS](https://git-lfs.com/)
-
----
 
 ## Part 2: Project Overview
 
@@ -125,13 +120,9 @@ A top-down camera providing a map-style view used as a background for the UI.
 
 </deflist>
 
----
-
 ## Part 3: Code Documentation
 
 For more details about the scripts and components, please refer to the internal documentation provided in the codebase.
-
----
 
 ## Part 4: Generate a Dataset
 
@@ -174,8 +165,6 @@ Here is an overview of the config file:
 }
 ```
 
----
-
 ## Contributing
 
 If you encounter a bug or have trouble using the project, please [create an issue](#) to report it.
@@ -187,5 +176,3 @@ We welcome contributions! You can:
 - Add new features or enhancements
 
 Thank you for helping make this project better!
-
----
