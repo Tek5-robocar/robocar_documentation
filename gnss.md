@@ -137,7 +137,66 @@ Your GNSS module is now up-to-date and ready for RTK positioning with enhanced p
 
 ## 4. Python Development {#python-dev}
 
-*This section will describe how to interface with the Point One Navigation Dev Kit using Python (e.g. serial communication, parsing NMEA or custom messages, etc.).*
+To interface with the GNSS module programmatically, use [Point One Host Tools](https://github.com/PointOneNav/p1-host-tools).  
+This set of Python applications allows logging data, configuration, and sending RTK corrections from Polaris.
+
+📦 Repo: https://github.com/PointOneNav/p1-host-tools  
+📚 Docs: https://pointonenav.com/docs/
+
+
+### Setup / Installation
+
+Clone the repository:
+
+```
+git clone https://github.com/PointOneNav/p1-host-tools.git  
+cd p1-host-tools
+```
+
+Create a virtual environment:
+
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+**(Windows: venv\Scripts\activate.bat)**
+
+Install requirements:
+
+```
+pip install -r requirements.txt
+```
+
+### Using Polaris Corrections with `p1_runner`
+
+1. Connect the GNSS module via USB
+2. Activate your Python virtual environment
+3. Run the following command with your Polaris key:
+
+```
+python3 bin/runner.py --device-id my-device --polaris abcd1234
+```
+
+Logs will be saved in `~/logs` (Linux/macOS) or `%USERPROFILE%\Documents\logs` (Windows).
+
+### Configuration with `config_tool`
+
+You can read or modify configuration settings via:
+
+```
+python3 bin/config_tool.py apply uart1 message_rate fusion_engine posemessage on
+python3 bin/config_tool.py apply uart1 message_rate nmea gga off
+python3 bin/config_tool.py save
+```
+
+Make sure to call `save` to persist the settings after applying them.
+
+### Tips
+
+- Always connect the GNSS device before starting the tool
+- Re-run pip install -r requirements.txt after pulling updates from the repo
+- Use --device-port /dev/ttyUSBX if auto-detection fails
+
 
 ## ✅ Notes
 
