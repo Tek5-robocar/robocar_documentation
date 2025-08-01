@@ -2,13 +2,8 @@
 layout: three-column
 title: VESC Calibration
 permalink: /vesc-calibration/
+description: Step-by-step guide to configure, flash, and test your VESC motor controller, including setup with the VESC Tool and Python scripting via pyvesc.
 ---
-
-# Robocar: VESC Calibration
-
-**An educational and research-ready platform for autonomous navigation**
-
-&nbsp;
 
 ## 1. Introduction {#introduction}
 
