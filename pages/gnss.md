@@ -61,7 +61,7 @@ Follow these steps to set up your device correctly.
      with yellow warning icons — this means Windows doesn't recognize the device yet.
 
 Here’s what you’ll typically see before installing the driver:
-![Unrecognized COM Ports](./images/gnss/peripherical_serial_port.png)
+![Unrecognized COM Ports](./../images/gnss/peripherical_serial_port.png)
 
 5. **Manually Install the Driver**
    - Right-click on **Enhanced Com Port**
@@ -96,7 +96,7 @@ Once the USB driver is installed and your device is recognized, you can begin co
   - 🔑 **Polaris API Key**: enter the API key provided to you or the one from your point account.
 
 Here’s what the configuration should look like once completed:
-![GNSS Corrections Setup](./images/gnss/P1_tool_kit.png)
+![GNSS Corrections Setup](./../images/gnss/P1_tool_kit.png)
 
 Once everything is configured, click **ADD** to save the GNSS connection.
 
@@ -128,10 +128,10 @@ Once the device is connected via USB and Point One Desktop is configured, you ca
 - Do **not** disconnect the USB or power during this process.
 
 Here’s what the firmware update window looks like before starting:
-![Firmware Update Screen](./images/gnss/P1_tools_frim_update.png)
+![Firmware Update Screen](./../images/gnss/P1_tools_frim_update.png)
 
 After a successful update, you should see a confirmation like this:
-![Firmware Update Success](./images/gnss/P1_tools_update_sucessfull.png)
+![Firmware Update Success](./../images/gnss/P1_tools_update_sucessfull.png)
 
 Your GNSS module is now up-to-date and ready for RTK positioning with enhanced performance and stability.
 

@@ -46,7 +46,7 @@ Although called “clips,” these act more like retainers — the part is slid 
 <b>Printing recommendation:</b> Print on one of the long side edges to keep the clip structure strong.
 
 <tr>
-<td><img src="anti_spark_clip.png" alt="3D model view" width="300"/></td>
+<td><img src="./../images/3d-print/anti_spark_clip.png" alt="3D model view" width="300"/></td>
 </tr>
 </def>
 
@@ -56,7 +56,7 @@ This box secures the battery. Two rear legs fit into existing holes in the RC ca
 <b>Printing recommendation:</b> Print diagonally (see reference image at the end) to reduce the need for supports — especially inside the box.
 
 <tr>
-<td><img src="batterie_box.png" alt="3D model view" width="300"/></td>
+<td><img src="./../images/3d-print/batterie_box.png" alt="3D model view" width="300"/></td>
 </tr>
 </def>
 
@@ -68,7 +68,7 @@ The camera housing includes two rear screw holes for mounting the camera and ver
 <b>Printing recommendation:</b> Print with the legs positioned horizontally to ensure strong joints between the legs and the body.
 
 <tr>
-<td><img src="camera_support.png" alt="3D model view" width="300"/></td>
+<td><img src="./../images/3d-print/camera_support.png" alt="3D model view" width="300"/></td>
 </tr>
 </def>
 
@@ -78,7 +78,7 @@ The camera housing includes two rear screw holes for mounting the camera and ver
 
 Everything should fit into your 3D printer as shown below:
 
-<td><img src="mounts.png" alt="3D printer layout" width="300"/></td>
+<td><img src="./../images/3d-print/mounts.png" alt="3D printer layout" width="300"/></td>
 
 <b>Recommended print settings:</b>
 - **Material:** PLA  
