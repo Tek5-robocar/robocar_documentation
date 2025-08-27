@@ -16,3 +16,8 @@ plugins:
   - jekyll-seo-tag
 whitelist:
   - jekyll-seo-tag
+defaults:
+  - scope:
+      path: "pages"
+    values:
+      layout: "default"

@@ -7,15 +7,21 @@
 - title: Order components
   url: /bom/
   toc_id: car-material
+- title: 3d models
+  url: /3d-models/
+  toc_id: Introduction
 - title: VESC
   url: /vesc-calibration/
   toc_id: introduction
 - title: GNSS RTK GPS - Point One
   url: /gnss-rtk-gps/
   toc_id: introduction
-- title: Racing Simulator
-  url: /racing-simulator/
-  toc_id: Tutorial
-- title: Mask Generator
-  url: /mask-generator/
-  toc_id: Tutorial
+# - title: Racing Simulator
+#   url: /racing-simulator/
+#   toc_id: Tutorial
+# - title: Mask Generator
+#   url: /mask-generator/
+#   toc_id: Tutorial
+# - title: RC
+#   url: /racing-sim/
+#   toc_id: Main Overview
