@@ -75,3 +75,52 @@ Now that the original electronics have been removed, it's time to mount the VESC
 
 To continue, you now need to flash and configure the VESC for use with your Robocar.  
 ➡️ Please refer to the [VESC Setup section](../vesc-calibration/) for detailed instructions.
+
+## Install the Battery Case
+
+Now that the motor controller is installed, let’s mount the **custom 3D-printed battery box** to securely hold the power source.
+
+1. **Position the battery box** in the right area of the chassis, aligning the rear legs of the box with the mounting holes.
+
+2. **Insert the battery** and check that it fits snugly. Ensure cables are routed cleanly to avoid stress or entanglement.
+
+> Below is an image showing the battery box fully installed with a battery inside, alongside the mounted VESC:
+
+<img src="./../images/car_building/car_battery_case.jpg"  
+     alt="Battery box installed in chassis with battery and VESC"  
+     width="400"  
+     style="max-height: 2500px; object-fit: contain;"/>
+
+## Install the Anti spark module
+
+To keep your wiring clean and your XT60 anti-spark connector secure, we use a dedicated 3D-printed case that holds it in place at the front of the chassis. This avoids stress on the cables and improves overall robustness.
+
+> Below is a photo of the chassis **before mounting** the anti-spark connector. You can see the available flat area just behind the front bumper:
+
+<img src="./../images/car_building/car_battery_case.jpg"  
+     alt="Chassis with empty anti-spark mounting area"  
+     width="400"  
+     style="max-height: 2500px; object-fit: contain;"/>
+
+1. **Position the anti-spark case**  
+   Place the 3D-printed case into the flat area between the front suspension and the steering servo. The mounting holes should align with the two small vertical holes in the plastic frame.
+
+2. **Insert the XT90 anti-spark connector**  
+   Slide the XT90 connector into the mount from the top. It should sit snugly and allow access for connection/disconnection during battery changes.
+
+3. **Secure the mount**  
+   Use two M3 screws to fasten the anti-spark mount to the chassis. If needed, pre-thread the holes with an M3 tap.
+
+4. **Route the cables**  
+   Neatly route the power cables back toward the VESC and battery. Keep them clear of moving suspension parts.
+
+> Below is a photo of the anti-spark connector mounted securely in place:
+
+<img src="./../images/car_building/car_anti_spark_case.jpg"  
+     alt="Anti-spark XT90 connector mount installed"  
+     width="400"  
+     style="max-height: 2500px; object-fit: contain;"/>
+
+## Install plates on car support
+
+
