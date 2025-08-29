@@ -108,19 +108,37 @@ To keep your wiring clean and your XT60 anti-spark connector secure, we use a de
 2. **Insert the XT90 anti-spark connector**  
    Slide the XT90 connector into the mount from the top. It should sit snugly and allow access for connection/disconnection during battery changes.
 
-3. **Secure the mount**  
+3. **Secure the mount**
    Use two M3 screws to fasten the anti-spark mount to the chassis. If needed, pre-thread the holes with an M3 tap.
 
-4. **Route the cables**  
+4. **Route the cables**
    Neatly route the power cables back toward the VESC and battery. Keep them clear of moving suspension parts.
 
 > Below is a photo of the anti-spark connector mounted securely in place:
 
-<img src="./../images/car_building/car_anti_spark_case.jpg"  
-     alt="Anti-spark XT90 connector mount installed"  
-     width="400"  
+<img src="./../images/car_building/car_anti_spark_case.jpg"
+     alt="Anti-spark XT90 connector mount installed"
+     width="400"
      style="max-height: 2500px; object-fit: contain;"/>
 
 ## Install plates on car support
 
+We now proceed to mount the rear support plate that will host additional components such as the Jetson Nano and DC converter. This platform is fixed to the existing rear plastic frame of the car using dedicated 3D-printed parts.
 
+> Below is a photo of the original rear mount **before** adding the 3D-printed plate. You can clearly see the open area in the middle and the side brackets that will be used to screw the support.
+
+<img src="./../images/car_building/car_mount_empty.jpg" alt="Rear plastic frame before mounting plate" width="400" style="max-height: 2500px; object-fit: contain;"/>
+
+### Mount the 3D-Printed Support Plate
+
+1. Take the 3D-printed plate and align its side hooks and screw holes with the rear plastic chassis structure.
+2. Clip the front tabs into place and gently push the rear edge down until it snaps in securely.
+3. Insert printed screws in the corner holes and tighten to ensure the platform stays firmly mounted.
+
+> The side view below shows how the support plate fits flush with the existing frame and locks into position.
+
+<img src="./../images/car_building/car_mount_fixation.jpg" alt="Side view of mounted support plate" width="400" style="max-height: 2500px; object-fit: contain;"/>
+
+> Here’s the final top view with the full plate securely installed and ready for Jetson and DC converter:
+
+<img src="./../images/car_building/car_mount_plate.jpg" alt="Top view of support plate mounted on rear" width="400" style="max-height: 2500px; object-fit: contain;"/>
