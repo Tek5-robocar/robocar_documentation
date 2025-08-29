@@ -11,7 +11,7 @@ description: Complete list of hardware components used for the Robocar project, 
 |-----------------------------|--------------------------------------------|
 | Anti-Spark                  | [Amazon](https://www.amazon.com/dp/B086Y8KSB6?ref=ppx_yo2ov_dt_b_fed_asin_title) |
 | VESC Controller             | [Amazon](https://www.amazon.com/Flipsky-Electric-Controller-Skateboard-FSESC4-20/dp/B08725X8CT/ref=sr_1_2?crid=18YL1O85AL9X9&dib=eyJ2IjoiMSJ9.Ik7fp4X7yH2TayrwqzoT6UQeSHZO_IcY6zc3WSyX0gzDmgN8uUwiEz3CPL3H6UdGspQEIYvV-aH3JRfuAFMsK1lJGGPKmNb9eB9JejzLWtoN-8eqWsEtOHOkufW79scd3MdpPBi9-EjRQ5aQq8sAdaQvZs6ulitCKNIEjRmwLq6xPojfNId7YbPe_aIkrREy0E-UDMZRFWuZjkGWzAlCRSimwIc0Z3MP2-qjZzt8C5qtA8OTYKy5ZBuRXjSRRExmMkSb7M6nTdPe2T9d3QbPG5BORX321YUprKKos9_zKIo.OOX84WdmZcPO9P6dHo3R3d8UKksM-3gcXF7efuy4lQQ&dib_tag=se&keywords=Flipsky+Electric+Speed+Controller+for+Skateboard+FSESC6.7+70A&qid=1756388638&sprefix=flipsky+electric+speed+controller+for+skateboard+fsesc6.7+70a+%2Caps%2C189&sr=8-2) |
-| Oak-D Depth Camera          | [Amazon](https://www.amazon.com/dp/B09T5FY68V?ref=ppx_yo2ov_dt_b_fed_asin_title) |
+| Oak-D Depth Camera          | [Amazon](https://shop.luxonis.com/products/oak-d-lite-1?variant=42583102456031) |
 | Point One Navigation System | [PointOne Store](https://store.pointonenav.com/products/dev-kit?srsltid=AfmBOop_-Fb4ifG7HwY7Ta5pSZipwozRcwjRH3h2sF6fAu18SdlDfu9i) |
 | Jetson Nano                 | [GoTronic](https://www.gotronic.fr/art-jetson-nano-developer-kit-okdo-36225.htm?gad_source=1&gclid=CjwKCAjwwLO_BhB2EiwAx2e-3z20kPWCzF_hfozLgOtZqupah7dDfq1sPO_kt7CxImLAd7qmd4tuEBoCun4QAvD_BwE) |
 | Jetson Nano Fan             | [Amazon](https://www.amazon.fr/Waveshare-Dedicated-Developer-Computer-Reverse-Proof/dp/B07XFPGSK3) |
