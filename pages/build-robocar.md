@@ -142,3 +142,16 @@ We now proceed to mount the rear support plate that will host additional compone
 > Here’s the final top view with the full plate securely installed and ready for Jetson and DC converter:
 
 <img src="./../images/car_building/car_mount_plate.jpg" alt="Top view of support plate mounted on rear" width="400" style="max-height: 2500px; object-fit: contain;"/>
+
+> Below is a photo of the car **with the DC converter mounted on the plate**, wired and centered:
+
+<img src="./../images/car_building/car_mount_dc.jpg" alt="DC-DC converter mounted on blue plate" width="400" style="max-height: 2500px; object-fit: contain;"/>
+
+4. Use the printed stick to fix the dc converter like on the picture.
+
+> Below is a photo of the full setup with the Jetson Nano installed and wired:
+
+<img src="./../images/car_building/car_mount_jetson.jpg" alt="Jetson Nano installed on blue plate" width="400" style="max-height: 2500px; object-fit: contain;"/>
+
+5. Align the Jetson Nano holes with the support columns on the plate.
+6. Secure it using M3 screws.
